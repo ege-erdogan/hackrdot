@@ -15,7 +15,7 @@ class HNScraper
     valid_articles = raw_articles.select{ |link| valid_post? link }
                          
     titles = valid_articles.map { |post| extract_title post }
-    article_urls = valid_articles.map { |article| correct_link article[:id] }
+    article_urls = valid_articles.map { |article| get_article_link article }
     scores = raw_scores.map { |score| score.inner_text.split(' ')[0] }
 
     comment_counts = raw_comments.select{ |c| comment? c }
@@ -46,8 +46,8 @@ class HNScraper
       return row.children[3][:class] == 'votelinks'
     end
 
-    def self.correct_link(link)
-      return "#{BASE_URL}/item?id=#{link}"
+    def self.get_article_link(content)
+      return content.children[4].children[0][:href]
     end
 
     def self.comment?(tag)
