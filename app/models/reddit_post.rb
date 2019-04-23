@@ -5,10 +5,10 @@ class RedditPost
 	
 	def initialize(title, comments, score, url, permalink)
 		@title = title
-		@comments = comments
+		@comment_count = comments
 		@score = score
-		@url = url
-		@permalink = "https://reddit.com#{permalink}"
+		@article_url = url
+		@reddit_url = "https://reddit.com#{permalink}"
 	end
 
 end

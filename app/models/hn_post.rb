@@ -3,12 +3,12 @@ class HNPost
 
 	attr_accessor :title, :score, :comment_count, :hn_url, :article_url
 
-	def initialize(title, ups, comments, article_link, hn_link)
+	def initialize(title, score, comment_count, article_link, hn_link)
 		@title = title
-		@ups = ups
-		@comments = comments
-		@article_link = article_link
-		@hn_link = hn_link
+		@score = score
+		@comment_count = comment_count
+		@article_url = article_link
+		@hn_url = hn_link
 	end
 	
 end

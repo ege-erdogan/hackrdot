@@ -33,8 +33,13 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'nokogiri', '~> 1.10.2'
+# Handling web content
 gem 'httparty', '~> 0.17.0'
+gem 'nokogiri', '~> 1.10.2'
+
+# UI
+gem 'bootstrap'
+gem 'jquery-rails'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false

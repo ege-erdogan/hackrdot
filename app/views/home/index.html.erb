@@ -1,0 +1,68 @@
+<br>
+<!-- <div class="ui container"> -->
+  <div class="ui equal width grid">
+    <div class="column">
+      <h1>HackerNews</h1>
+      <table id="hn-table" class="ui orange striped fluid table">
+        <% @hn_posts.each do |hn_post| %>
+          <tr>
+            <td class="left aligned collapsing">
+              <%= hn_post.score %>
+            </td>
+            <td class="left aligned collapsing">
+              <a href="<%= hn_post.hn_url %>" target="_blank">
+                <%= hn_post.comment_count %>
+              </a>
+            </td>
+            <td>
+              <a href="<%= hn_post.article_url %>" style="color: black" target="_blank">
+                <%= hn_post.title %>
+              </a>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+    <div id="reddit-posts" class="column">
+      <h1>r/programming</h1>
+      <table id="reddit-table" class="ui blue striped fluid table">
+        <% @reddit_posts.each do |reddit_post| %>
+          <tr>
+            <td class="left aligned collapsing">
+              <%= reddit_post.score %>
+            </td>
+            <td class="left aligned collapsing">
+              <a href="<%= reddit_post.reddit_url %>" target="_blank">
+                <%= reddit_post.comment_count %>
+              </a>
+            </td>
+            <td>
+              <a href="<%= reddit_post.article_url %>" style="color: black" target="_blank">
+                <%= reddit_post.title %>
+              </a>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+    <div id="sd-posts" class="column">
+      <h1>Slashdot</h1>
+      <table id="reddit-table" class="ui purple striped fluid table">
+        <% @sd_posts.each do |sd_post| %>
+          <tr>
+            <td class="left aligned collapsing">
+              <a href="<%= sd_post.sd_url %>" target="_blank">
+                <%= sd_post.comment_count %>
+              </a>
+            </td>
+            <td>
+              <a href="<%= sd_post.sd_url %>" style="color: black" target="_blank">
+                <%= sd_post.title %>
+              </a>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+<!-- </div> -->

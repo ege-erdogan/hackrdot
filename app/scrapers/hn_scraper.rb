@@ -7,16 +7,20 @@ class HNScraper
   def self.get_posts(page = 1)
     doc = Nokogiri::HTML(open("#{BASE_URL}/news?page=#{page}"))
 
-    raw_articles = doc.css('a.storylink').to_a
+    raw_articles = doc.css('.athing').to_a
     raw_scores = doc.css('span.score').to_a
     raw_comments = doc.css('td.subtext a').to_a
     raw_ids = doc.css('tr.athing').to_a
 
-    titles = raw_articles.map(&:inner_text)
-    article_urls = raw_articles.map { |article| correct_link article[:href] }
+    valid_articles = raw_articles.select{ |link| valid_post? link }
+                         
+    titles = valid_articles.map { |post| extract_title post }
+    article_urls = valid_articles.map { |article| correct_link article[:id] }
     scores = raw_scores.map { |score| score.inner_text.split(' ')[0] }
-    comment_counts = raw_comments.select(&:comment?)
-                         .map { |c| extract_comment_count c.inner_text }
+
+    comment_counts = raw_comments.select{ |c| comment? c }
+                                 .map { |c| extract_comment_count c.inner_text }
+
     hn_urls = raw_ids.map { |thing| form_hn_link thing[:id] }
 
     posts = []
@@ -32,27 +36,32 @@ class HNScraper
     return posts
   end
 
-
   private
 
-  def self.correct_link(link)
-    return "#{BASE_URL}/#{link}" if link.index('item?id').zero?
+    def self.extract_title(row)
+      return row.children[4].children[0].inner_text
+    end
 
-    return link
-  end
+    def self.valid_post?(row)
+      return row.children[3][:class] == 'votelinks'
+    end
 
-  def self.comment?(tag)
-    return (tag.to_s.include? 'comment' or tag.to_s.include? 'discuss')
-  end
+    def self.correct_link(link)
+      return "#{BASE_URL}/item?id=#{link}"
+    end
 
-  def self.extract_comment_count(text)
-    return '0' if text.include?('discuss')
+    def self.comment?(tag)
+      return (tag.to_s.include? 'comment' or tag.to_s.include? 'discuss')
+    end
 
-    return text.tr("\u00A0", ' ').split(' ')[0]
-  end
+    def self.extract_comment_count(text)
+      return '0' if text.include?('discuss')
 
-  def self.form_hn_link(id)
-    return "#{BASE_URL}/item?id=#{id}"
-  end
+      return text.tr("\u00A0", ' ').split(' ')[0]
+    end
+
+    def self.form_hn_link(id)
+      return "#{BASE_URL}/item?id=#{id}"
+    end
 
 end
