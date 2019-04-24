@@ -1,4 +1,6 @@
 class HNScraper
+  require 'open-uri'
+
   BASE_URL = 'https://news.ycombinator.com'
 
   def self.get_posts(count = 15)
@@ -25,13 +27,15 @@ class HNScraper
                                    .map { |c| extract_comment_count c.inner_text }
 
 			hn_urls = raw_ids.map { |thing| form_hn_link thing[:id] }
-			      
+      domains = article_urls.map { |url| extract_domain url  }
+
       count.times do |index|
         post = HNPost.new(coder.decode(titles[index]),
                           scores[index],
                           comment_counts[index],
                           article_urls[index],
-                          hn_urls[index])
+                          hn_urls[index],
+                          domains[index])
         posts.push post
       end
     end
@@ -40,6 +44,14 @@ class HNScraper
   end
 
   private
+
+    def self.extract_domain(url)
+      head = url.index('/') + 2
+      head += 4 if url.include?('www')
+      url = url[head..]
+      tail = url.index('/')
+      return url[0...tail]
+    end
 
     def self.extract_title(row)
       return row.children[4].children[0].inner_text

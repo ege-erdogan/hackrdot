@@ -14,6 +14,9 @@
               <a href="<%= hn_post.article_url %>" style="color: black" target="_blank">
                 <%= hn_post.title %>
               </a>
+              <small class="text-muted">
+                (<%= hn_post.domain %>)
+              </small>
             </td>
             <td>
               <a class="badge badge-warning badge-pill" href="<%= hn_post.hn_url %>" target="_blank">
