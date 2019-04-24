@@ -4,6 +4,8 @@ class SDScraper
   def self.get_posts(page = 0)
     doc = Nokogiri::HTML(open("#{BASE_URL}/?page=#{page}"))
 
+    coder = HTMLEntities.new
+
     raw_stories = doc.css('.story-title a')
     raw_comment_counts = doc.css('.comment-bubble')
 
@@ -21,7 +23,7 @@ class SDScraper
 
     posts = []
     titles.each_with_index do |title, index|
-      post = SDPost.new(title,
+      post = SDPost.new(coder.decode(title),
                         sd_urls[index],
                         comment_counts[index])
       posts.push post

@@ -1,11 +1,10 @@
 class HNScraper
-  require 'Nokogiri'
-  require 'open-uri'
-
   BASE_URL = 'https://news.ycombinator.com'
 
   def self.get_posts(page = 1)
     doc = Nokogiri::HTML(open("#{BASE_URL}/news?page=#{page}"))
+
+    coder = HTMLEntities.new
 
     raw_articles = doc.css('.athing').to_a
     raw_scores = doc.css('span.score').to_a
@@ -25,7 +24,7 @@ class HNScraper
 
     posts = []
     titles.each_with_index do |title, index|
-      post = HNPost.new(title,
+      post = HNPost.new(coder.decode(title),
                         scores[index],
                         comment_counts[index],
                         article_urls[index],
