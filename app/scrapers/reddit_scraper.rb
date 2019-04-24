@@ -15,7 +15,8 @@ class RedditScraper
                             data[:num_comments],
                             data[:ups],
                             data[:url],
-                            data[:permalink])
+                            data[:permalink],
+                            data[:domain])
       posts.push post
     end
 

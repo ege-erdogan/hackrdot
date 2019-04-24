@@ -12,10 +12,13 @@ class SDScraper
 
       raw_stories = doc.css('.story-title a')
       raw_comment_counts = doc.css('.comment-bubble')
+      raw_article_links = doc.css('.story-sourcelnk')
 
       titles = []
       sd_urls = []
 
+      article_urls = raw_article_links.map { |a| a[:href] }
+      domains = raw_article_links.map(&:inner_text)
       comment_counts = raw_comment_counts.map(&:inner_text)
 
       raw_stories.each do |story|
@@ -28,7 +31,9 @@ class SDScraper
       count.times do |index|
         post = SDPost.new(coder.decode(titles[index]),
                           sd_urls[index],
-                          comment_counts[index])
+                          comment_counts[index],
+                          article_urls[index],
+                          domains[index])
         posts.push post
       end
     end

@@ -41,6 +41,9 @@
               <a href="<%= reddit_post.article_url %>" style="color: black" target="_blank">
                 <%= reddit_post.title %>
               </a>
+              <small class="text-muted">
+                (<%= reddit_post.domain %>)
+              </small>
             </td>
             <td>
               <a class="badge badge-primary badge-pill" href="<%= reddit_post.reddit_url %>" target="_blank">
@@ -60,6 +63,11 @@
               <a href="<%= sd_post.sd_url %>" style="color: black" target="_blank">
                 <%= sd_post.title %>
               </a>
+              <small class="text-muted">
+                <a href="<%= sd_post.article_url %>" class="text-muted">
+                  <%= sd_post.domain %>
+                </a>
+              </small>
             </td>
             <td>
               <a class="badge badge-info badge-pill" href="<%= sd_post.sd_url %>" target="_blank">
