@@ -1,7 +1,7 @@
 class RedditScraper
   BASE_URL = 'https://www.reddit.com/r'
 
-  def self.get_posts(subreddit, count)
+  def self.get_posts(subreddit, count = 15)
     json = HTTParty.get("#{BASE_URL}/#{subreddit}/.json?count=#{count}",
                         headers: {'User-Agent' => 'news-app'})
     content = JSON.parse json.to_s, symbolize_names: true

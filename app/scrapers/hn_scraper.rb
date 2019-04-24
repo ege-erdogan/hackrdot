@@ -1,35 +1,39 @@
 class HNScraper
   BASE_URL = 'https://news.ycombinator.com'
 
-  def self.get_posts(page = 1)
-    doc = Nokogiri::HTML(open("#{BASE_URL}/news?page=#{page}"))
+  def self.get_posts(count = 15)
 
     coder = HTMLEntities.new
-
-    raw_articles = doc.css('.athing').to_a
-    raw_scores = doc.css('span.score').to_a
-    raw_comments = doc.css('td.subtext a').to_a
-    raw_ids = doc.css('tr.athing').to_a
-
-    valid_articles = raw_articles.select{ |link| valid_post? link }
-                         
-    titles = valid_articles.map { |post| extract_title post }
-    article_urls = valid_articles.map { |article| get_article_link article }
-    scores = raw_scores.map { |score| score.inner_text.split(' ')[0] }
-
-    comment_counts = raw_comments.select{ |c| comment? c }
-                                 .map { |c| extract_comment_count c.inner_text }
-
-    hn_urls = raw_ids.map { |thing| form_hn_link thing[:id] }
-
+    page_count = (count / 30.0).ceil
     posts = []
-    titles.each_with_index do |title, index|
-      post = HNPost.new(coder.decode(title),
-                        scores[index],
-                        comment_counts[index],
-                        article_urls[index],
-                        hn_urls[index])
-      posts.push post
+
+    page_count.times do |page|
+      doc = Nokogiri::HTML(open("#{BASE_URL}/news?page=#{page + 1}"))
+
+      raw_articles = doc.css('.athing').to_a
+      raw_scores = doc.css('span.score').to_a
+      raw_comments = doc.css('td.subtext a').to_a
+      raw_ids = doc.css('tr.athing').to_a
+
+      valid_articles = raw_articles.select{ |link| valid_post? link }
+                           
+      titles = valid_articles.map { |post| extract_title post }
+      article_urls = valid_articles.map { |article| get_article_link article }
+      scores = raw_scores.map { |score| score.inner_text.split(' ')[0] }
+
+      comment_counts = raw_comments.select{ |c| comment? c }
+                                   .map { |c| extract_comment_count c.inner_text }
+
+			hn_urls = raw_ids.map { |thing| form_hn_link thing[:id] }
+			      
+      count.times do |index|
+        post = HNPost.new(coder.decode(titles[index]),
+                          scores[index],
+                          comment_counts[index],
+                          article_urls[index],
+                          hn_urls[index])
+        posts.push post
+      end
     end
 
     return posts
