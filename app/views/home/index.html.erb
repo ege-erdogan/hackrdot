@@ -1,63 +1,66 @@
-<br>
-<!-- <div class="ui container"> -->
-  <div class="ui equal width grid">
-    <div class="column">
-      <h1>HackerNews</h1>
-      <table id="hn-table" class="ui orange striped fluid table">
+<div class="container-fluid">
+  <div class="row">
+    <div class="col">
+      <h2>HackerNews</h2>
+      <table class="table">
         <% @hn_posts.each do |hn_post| %>
           <tr>
-            <td class="left aligned collapsing">
-              <%= hn_post.score %>
-            </td>
-            <td class="left aligned collapsing">
-              <a href="<%= hn_post.hn_url %>" target="_blank">
-                <%= hn_post.comment_count %>
-              </a>
+            <td>
+              <strong>
+                <%= hn_post.score %>
+              </strong>
             </td>
             <td>
-              <a href="<%= hn_post.article_url %>" style="color: black" target="_blank">
+              <a href="<%= hn_post.hn_url %>" style="color: black" target="_blank">
                 <%= hn_post.title %>
               </a>
             </td>
+            <td>
+              <a class="badge badge-warning badge-pill" href="<%= hn_post.hn_url %>" target="_blank">
+                <%= hn_post.comment_count %>
+              </a>
+            </td>
           </tr>
         <% end %>
       </table>
     </div>
-    <div id="reddit-posts" class="column">
-      <h1>r/programming</h1>
-      <table id="reddit-table" class="ui blue striped fluid table">
+    <div class="col">
+      <h2>r/programming</h2>
+      <table class="table">
         <% @reddit_posts.each do |reddit_post| %>
           <tr>
-            <td class="left aligned collapsing">
-              <%= reddit_post.score %>
-            </td>
-            <td class="left aligned collapsing">
-              <a href="<%= reddit_post.reddit_url %>" target="_blank">
-                <%= reddit_post.comment_count %>
-              </a>
+            <td>
+              <strong>
+                <%= reddit_post.score %>
+              </strong>
             </td>
             <td>
-              <a href="<%= reddit_post.article_url %>" style="color: black" target="_blank">
+              <a href="<%= reddit_post.reddit_url %>" style="color: black" target="_blank">
                 <%= reddit_post.title %>
               </a>
             </td>
+            <td>
+              <a class="badge badge-primary badge-pill" href="<%= reddit_post.reddit_url %>" target="_blank">
+                <%= reddit_post.comment_count %>
+              </a>
+            </td>
           </tr>
         <% end %>
       </table>
     </div>
-    <div id="sd-posts" class="column">
-      <h1>Slashdot</h1>
-      <table id="reddit-table" class="ui purple striped fluid table">
+    <div class="col">
+      <h2>Slashdot</h2>
+      <table class="table">
         <% @sd_posts.each do |sd_post| %>
           <tr>
-            <td class="left aligned collapsing">
-              <a href="<%= sd_post.sd_url %>" target="_blank">
-                <%= sd_post.comment_count %>
-              </a>
-            </td>
             <td>
               <a href="<%= sd_post.sd_url %>" style="color: black" target="_blank">
                 <%= sd_post.title %>
+              </a>
+            </td>
+            <td>
+              <a class="badge badge-info badge-pill" href="<%= sd_post.sd_url %>" target="_blank">
+                <%= sd_post.comment_count %>
               </a>
             </td>
           </tr>
@@ -65,4 +68,4 @@
       </table>
     </div>
   </div>
-<!-- </div> -->
+</div>
