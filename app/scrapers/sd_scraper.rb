@@ -1,5 +1,6 @@
 class SDScraper
   BASE_URL = "https://slashdot.org"
+  ARTICLES_PER_PAGE = 15 # sd default
 
   def self.get_posts(count = 15)
 
@@ -28,13 +29,14 @@ class SDScraper
         end
       end
 
-      count.times do |index|
+      ARTICLES_PER_PAGE.times do |index|
         post = SDPost.new(coder.decode(titles[index]),
                           sd_urls[index],
                           comment_counts[index],
                           article_urls[index],
                           domains[index])
         posts.push post
+        break if posts.length == count
       end
     end
 

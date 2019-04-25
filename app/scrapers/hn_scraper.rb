@@ -3,7 +3,7 @@ class HNScraper
 
   BASE_URL = 'https://news.ycombinator.com'
 
-  def self.get_posts(count = 15)
+  def self.get_posts(count = 25)
 
     coder = HTMLEntities.new
     page_count = (count / 30.0).ceil
@@ -78,7 +78,7 @@ class HNScraper
     end
 
     def self.form_hn_link(id)
-      return "#{BASE_URL}/item?id=#{id}"
+      return "#{BASE_URL}/#{id}"
     end
 
 end

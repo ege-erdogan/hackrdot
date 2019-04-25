@@ -4,7 +4,7 @@
       <h2>HackerNews</h2>
       <table class="table">
         <% @hn_posts.each do |hn_post| %>
-          <tr>
+          <tr class="table-warning">
             <td>
               <strong>
                 <%= hn_post.score %>
@@ -19,7 +19,7 @@
               </small>
             </td>
             <td>
-              <a class="badge badge-warning badge-pill" href="<%= hn_post.hn_url %>" target="_blank">
+              <a class="badge badge-secondary badge-pill" href="<%= hn_post.hn_url %>" target="_blank">
                 <%= hn_post.comment_count %>
               </a>
             </td>
@@ -38,7 +38,7 @@
               </strong>
             </td>
             <td>
-              <a href="<%= reddit_post.article_url %>" style="color: black" target="_blank">
+              <a href="<%= reddit_post.article_url %>" style="color: blue" target="_blank">
                 <%= reddit_post.title %>
               </a>
               <small class="text-muted">
@@ -56,21 +56,23 @@
     </div>
     <div class="col">
       <h2>Slashdot</h2>
-      <table class="table">
+      <table class="table table-dark">
         <% @sd_posts.each do |sd_post| %>
-          <tr>
+          <tr class="bg-info">
             <td>
-              <a href="<%= sd_post.sd_url %>" style="color: black" target="_blank">
-                <%= sd_post.title %>
+              <a href="<%= sd_post.sd_url %>" style="color: white" target="_blank">
+                <strong>
+                  <%= sd_post.title %>
+                </strong>
               </a>
-              <small class="text-muted">
-                <a href="<%= sd_post.article_url %>" class="text-muted">
+              <small>
+                <a href="<%= sd_post.article_url %>" style="color: #93cccc">
                   <%= sd_post.domain %>
                 </a>
               </small>
             </td>
             <td>
-              <a class="badge badge-info badge-pill" href="<%= sd_post.sd_url %>" target="_blank">
+              <a class="badge badge-dark badge-pill" href="<%= sd_post.sd_url %>" target="_blank">
                 <%= sd_post.comment_count %>
               </a>
             </td>
