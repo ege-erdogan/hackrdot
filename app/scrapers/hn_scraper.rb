@@ -62,7 +62,9 @@ class HNScraper
     end
 
     def self.get_article_link(content)
-      return content.children[4].children[0][:href]
+      link = content.children[4].children[0][:href]
+      return form_hn_link(link) if link.include? "item?id="
+      return link
     end
 
     def self.comment?(tag)
