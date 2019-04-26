@@ -1,8 +1,16 @@
 <div class="container-fluid">
+  <%= render "include/header" %>
+
   <div class="row">
     <div class="col">
-      <h2>HackerNews</h2>
       <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th colspan="3">
+              HackerNews
+            </th>
+          </tr>
+        </thead>
         <% @hn_posts.each do |hn_post| %>
           <tr class="table-warning">
             <td>
@@ -28,8 +36,14 @@
       </table>
     </div>
     <div class="col">
-      <h2>r/programming</h2>
       <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th colspan="3">
+              r/programming
+            </th>
+          </tr>
+        </thead>
         <% @reddit_posts.each do |reddit_post| %>
           <tr>
             <td>
@@ -55,8 +69,14 @@
       </table>
     </div>
     <div class="col">
-      <h2>Slashdot</h2>
       <table class="table table-dark">
+        <thead class="thead-dark">
+          <tr>
+            <th colspan="3">
+              Slashdot
+            </th>
+          </tr>
+        </thead>
         <% @sd_posts.each do |sd_post| %>
           <tr class="bg-info">
             <td>

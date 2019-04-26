@@ -78,6 +78,7 @@ class HNScraper
     end
 
     def self.form_hn_link(id)
+      return "#{BASE_URL}/item?id=#{id}" unless id.include? 'item?id'
       return "#{BASE_URL}/#{id}"
     end
 
