@@ -21,7 +21,7 @@
       </td>
       <td style="width: 15%">
         <a class="hn-secondary-text" href="<%= hn_post.hn_url %>" target="_blank">
-          <u><%= hn_post.comment_count %> comments</u>
+          <u><%= hn_post.comment_count %> <%= hn_post.comment_count == 1 ? 'comment' : 'comments' %> </u>
         </a>
       </td>
     </tr>

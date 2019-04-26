@@ -21,7 +21,7 @@
       </td>
       <td style="width: 15%">
         <a class="reddit-secondary-text" href="<%= reddit_post.reddit_url %>" target="_blank">
-          <u class="mb-0"><%= reddit_post.comment_count %> comments</u>
+          <u class="mb-0"><%= reddit_post.comment_count %> <%= reddit_post.comment_count == 1 ? 'comment' : 'comments' %></u>
         </a>
       </td>
     </tr>
