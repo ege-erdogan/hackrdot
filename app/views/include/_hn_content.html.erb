@@ -1,0 +1,24 @@
+<table class="table">
+  <% @hn_posts.each do |hn_post| %>
+    <tr class="table-warning">
+      <td>
+        <strong>
+          <%= hn_post.score %>
+        </strong>
+      </td>
+      <td>
+        <a href="<%= hn_post.article_url %>" style="color: black" target="_blank">
+          <%= hn_post.title %>
+        </a>
+        <small class="text-muted">
+          (<%= hn_post.domain %>)
+        </small>
+      </td>
+      <td>
+        <a class="text-secondary" href="<%= hn_post.hn_url %>" target="_blank">
+          <u><%= hn_post.comment_count %> comments</u>
+        </a>
+      </td>
+    </tr>
+  <% end %>
+</table>

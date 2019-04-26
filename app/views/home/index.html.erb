@@ -1,104 +1,30 @@
-<div class="container-fluid">
+<div class="container">
   <%= render "include/header" %>
 
-  <div class="row">
-    <div class="col">
-      <table class="table">
-        <thead class="thead-dark">
-          <tr>
-            <th colspan="3">
-              HackerNews
-            </th>
-          </tr>
-        </thead>
-        <% @hn_posts.each do |hn_post| %>
-          <tr class="table-warning">
-            <td>
-              <strong>
-                <%= hn_post.score %>
-              </strong>
-            </td>
-            <td>
-              <a href="<%= hn_post.article_url %>" style="color: black" target="_blank">
-                <%= hn_post.title %>
-              </a>
-              <small class="text-muted">
-                (<%= hn_post.domain %>)
-              </small>
-            </td>
-            <td>
-              <a class="badge badge-secondary badge-pill" href="<%= hn_post.hn_url %>" target="_blank">
-                <%= hn_post.comment_count %>
-              </a>
-            </td>
-          </tr>
-        <% end %>
-      </table>
+  <ul class="nav nav-pills nav-fill" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="hn-tab" href="#hn" data-toggle="pill" role="tab" aria-controls="hn" aria-selected="true">Hacker News</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="reddit-tab" href="#reddit" data-toggle="pill" role="tab" aria-controls="reddit" aria-selected="false">r/programming</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="sd-tab" href="#sd" data-toggle="pill" role="tab" aria-controls="sd" aria-selected="false">Slashdot</a>
+    </li>
+  </ul>
+  <br>
+  <div class="tab-content" id="content">
+    <div class="tab-pane fade show active" id="hn" role="tabpanel" aria-labelledby="hn-tab">
+      <%= render "include/hn_content" %>
     </div>
-    <div class="col">
-      <table class="table">
-        <thead class="thead-dark">
-          <tr>
-            <th colspan="3">
-              r/programming
-            </th>
-          </tr>
-        </thead>
-        <% @reddit_posts.each do |reddit_post| %>
-          <tr>
-            <td>
-              <strong>
-                <%= reddit_post.score %>
-              </strong>
-            </td>
-            <td>
-              <a href="<%= reddit_post.article_url %>" style="color: blue" target="_blank">
-                <%= reddit_post.title %>
-              </a>
-              <small class="text-muted">
-                (<%= reddit_post.domain %>)
-              </small>
-            </td>
-            <td>
-              <a class="badge badge-primary badge-pill" href="<%= reddit_post.reddit_url %>" target="_blank">
-                <%= reddit_post.comment_count %>
-              </a>
-            </td>
-          </tr>
-        <% end %>
-      </table>
+    <div class="tab-pane fade" id="reddit" role="tabpanel" aria-labelledby="reddit-tab">
+      <%= render "include/reddit_content" %>
     </div>
-    <div class="col">
-      <table class="table table-dark">
-        <thead class="thead-dark">
-          <tr>
-            <th colspan="3">
-              Slashdot
-            </th>
-          </tr>
-        </thead>
-        <% @sd_posts.each do |sd_post| %>
-          <tr class="bg-info">
-            <td>
-              <a href="<%= sd_post.sd_url %>" style="color: white" target="_blank">
-                <strong>
-                  <%= sd_post.title %>
-                </strong>
-              </a>
-              <small>
-                <a href="<%= sd_post.article_url %>" style="color: #93cccc">
-                  <%= sd_post.domain %>
-                </a>
-              </small>
-            </td>
-            <td>
-              <a class="badge badge-dark badge-pill" href="<%= sd_post.sd_url %>" target="_blank">
-                <%= sd_post.comment_count %>
-              </a>
-            </td>
-          </tr>
-        <% end %>
-      </table>
+    <div class="tab-pane fade" id="sd" role="tabpanel" aria-labelledby="sd-tab">
+      <%= render "include/sd_content" %>
     </div>
   </div>
 </div>
+
+
+

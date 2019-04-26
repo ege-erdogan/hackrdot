@@ -1,0 +1,24 @@
+<table class="table">
+  <% @reddit_posts.each do |reddit_post| %>
+    <tr>
+      <td>
+        <strong>
+          <%= reddit_post.score %>
+        </strong>
+      </td>
+      <td>
+        <a href="<%= reddit_post.article_url %>" style="color: blue" target="_blank">
+          <%= reddit_post.title %>
+        </a>
+        <small class="text-muted">
+          (<%= reddit_post.domain %>)
+        </small>
+      </td>
+      <td>
+        <a class="badge badge-primary badge-pill" href="<%= reddit_post.reddit_url %>" target="_blank">
+          <%= reddit_post.comment_count %>
+        </a>
+      </td>
+    </tr>
+  <% end %>
+</table>

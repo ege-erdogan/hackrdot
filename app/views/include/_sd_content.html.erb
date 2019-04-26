@@ -1,0 +1,23 @@
+<table class="table table-dark">
+  <% @sd_posts.each do |sd_post| %>
+    <tr class="bg-info">
+      <td>
+        <a href="<%= sd_post.sd_url %>" style="color: white" target="_blank">
+          <strong>
+            <%= sd_post.title %>
+          </strong>
+        </a>
+        <small>
+          <a href="<%= sd_post.article_url %>" style="color: #93cccc">
+            <%= sd_post.domain %>
+          </a>
+        </small>
+      </td>
+      <td>
+        <a class="badge badge-dark badge-pill" href="<%= sd_post.sd_url %>" target="_blank">
+          <%= sd_post.comment_count %>
+        </a>
+      </td>
+    </tr>
+  <% end %>
+</table>
