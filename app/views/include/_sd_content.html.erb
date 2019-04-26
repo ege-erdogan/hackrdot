@@ -1,6 +1,11 @@
-<table class="table table-dark">
+<table class="table table-dark table-borderless">
+  <thead class="sd-filler">
+    <th colspan="2">
+      
+    </th>
+  </thead>
   <% @sd_posts.each do |sd_post| %>
-    <tr class="bg-info">
+    <tr class="sd-row">
       <td>
         <a href="<%= sd_post.sd_url %>" style="color: white" target="_blank">
           <strong>
@@ -8,7 +13,7 @@
           </strong>
         </a>
         <small>
-          <a href="<%= sd_post.article_url %>" style="color: #93cccc">
+          <a href="<%= sd_post.article_url %>" class="sd-secondary-text">
             <%= sd_post.domain %>
           </a>
         </small>
@@ -17,9 +22,6 @@
         <a class="btn btn-dark btn-block btn-sm" href="<%= sd_post.sd_url %>" target="_blank">
           <strong><%= sd_post.comment_count %></strong>
         </a>
-<!--         <a class="badge badge-dark badge-pill" href="<%= sd_post.sd_url %>" target="_blank">
-          <%= sd_post.comment_count %>
-        </a> -->
       </td>
     </tr>
   <% end %>

@@ -1,3 +1,59 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// COLORS
+$hn_background: #F6F6F0;
+$hn_secondary_text: #898988;
+$hn_icon_background: #EC6F2D;
+
+$reddit_secondary_text: #888888;
+$reddit_icon_background: #0D2A35;
+
+$sd_text_background: #2A6564;
+$sd_icon_background: #296465;
+$sd_secondary_text: #8CBBBB;
+
+// CONTENT COLORING
+.sd-row {
+	background-color: $sd_text_background;
+}
+
+.sd-secondary-text {
+	color: $sd_secondary_text;
+	&:hover {
+		color: $sd_secondary_text;
+	}
+}
+
+.hn-row {
+	background-color: $hn_background;
+}
+
+.hn-secondary-text {
+	color: $hn_secondary_text;
+}
+
+.reddit-secondary-text {
+	color: $reddit_secondary_text;
+}
+
+// TAB COLORING
+
+#hn-tab, .hn-filler {
+	background-color: $hn_icon_background;
+}
+
+#reddit-tab, .reddit-filler {
+	background-color: $reddit_icon_background;
+}
+
+#sd-tab, .sd-filler {
+	background-color: $sd_icon_background;
+}
+
+.nav-link {
+-webkit-border-radius: 0 !important;
+-moz-border-radius: 0 !important;
+border-radius: 0 !important;
+}
