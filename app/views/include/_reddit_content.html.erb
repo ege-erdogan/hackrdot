@@ -14,9 +14,9 @@
           (<%= reddit_post.domain %>)
         </small>
       </td>
-      <td>
-        <a class="badge badge-primary badge-pill" href="<%= reddit_post.reddit_url %>" target="_blank">
-          <%= reddit_post.comment_count %>
+      <td style="width: 15%">
+        <a class="text-secondary" href="<%= reddit_post.reddit_url %>" target="_blank">
+          <u class="mb-0"><%= reddit_post.comment_count %> comments</u>
         </a>
       </td>
     </tr>
