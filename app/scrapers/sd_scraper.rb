@@ -8,39 +8,20 @@ class SDScraper
     coder = HTMLEntities.new  
     posts = []
 
-    page_count.times do |page|
-      doc = Nokogiri::HTML(open("#{BASE_URL}/?page=#{page}"))
+    doc = Nokogiri::HTML(open("#{BASE_URL}/archive.pl"))
 
-      raw_stories = doc.css('.story-title a')
-      raw_comment_counts = doc.css('.comment-bubble')
-      raw_article_links = doc.css('.story-sourcelnk')
+    stories = doc.css('.main-content a')
+    comment_details = doc.css('.cmntcnt')
 
-      titles = []
-      sd_urls = []
-
-      article_urls = raw_article_links.map { |a| a[:href] }
-      domains = raw_article_links.map(&:inner_text)
-      comment_counts = raw_comment_counts.map(&:inner_text)
-
-      raw_stories.each do |story|
-        unless story[:onclick].nil?
-          titles.push story.inner_text
-          sd_urls.push "https:#{story[:href]}"
-        end
-      end
-
-      ARTICLES_PER_PAGE.times do |index|
-        post = SDPost.new(coder.decode(titles[index]),
-                          sd_urls[index],
-                          comment_counts[index],
-                          article_urls[index],
-                          domains[index])
-        posts.push post
-        break if posts.length == count
-      end
+    # start from 4 because first four links are unrelated
+    # there is no other query possible to remove them
+    stories[4..].each_with_index do |story, index|
+      post = SDPost.new(coder.decode(story.inner_text),
+                        story[:href],
+                        comment_details[index].children[1].inner_text.split(' ')[0])
+      posts.push post
+      return posts if posts.length == count
     end
-
-    return posts
   end
 
 end
