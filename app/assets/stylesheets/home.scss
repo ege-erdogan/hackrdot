@@ -2,10 +2,19 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@font-face {
+	font-family: 'Fira-Sans';
+	src: asset-url('FiraSans-Regular.ttf') format("trueType");
+}
+
+body {
+	font-family: 'Fira-Sans', sans-serif !important;
+}
+
 // COLORS
 $hn_background: #F6F6F0;
 $hn_secondary_text: #898988;
-$hn_icon_background: #EC6F2D;
+$hn_icon_background: #FF660A;
 
 $reddit_secondary_text: #888888;
 $reddit_icon_background: #0D2A35;
@@ -38,8 +47,7 @@ $sd_secondary_text: #8CBBBB;
 	color: $reddit_secondary_text;
 }
 
-// TAB COLORING
-
+// TAB & NAVBAR COLORING
 #hn-tab, .hn-filler {
 	background-color: $hn_icon_background;
 }
@@ -57,3 +65,19 @@ $sd_secondary_text: #8CBBBB;
 -moz-border-radius: 0 !important;
 border-radius: 0 !important;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

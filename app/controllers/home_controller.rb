@@ -4,6 +4,7 @@ class HomeController < ApplicationController
 	LIMIT = 25
 
   def index
+    puts "-------------------- BENCHMARKS -----------------------"
   	puts "Hacker News: "
   	puts Benchmark.measure { 
   		@hn_posts = HNScraper.get_posts(LIMIT)
@@ -16,6 +17,7 @@ class HomeController < ApplicationController
 		puts Benchmark.measure {
 			@reddit_posts = RedditScraper.get_posts('programming', LIMIT)
 		}
+    puts "-------------------------------------------------------"
 	end
 
 end
