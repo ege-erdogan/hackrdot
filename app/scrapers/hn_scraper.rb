@@ -4,13 +4,11 @@ class HNScraper
   BASE_URL = 'https://news.ycombinator.com'
 
   def self.get_posts(count = 25)
-
-    coder = HTMLEntities.new
     page_count = (count / 30.0).ceil
     posts = []
 
     page_count.times do |page|
-      doc = Nokogiri::HTML(open("#{BASE_URL}/news?page=#{page + 1}"))
+      doc = Nokogiri::HTML(open("#{BASE_URL}/news?page=#{page + 1}"), nil, Encoding::UTF_8.to_s)
 
       raw_articles = doc.css('.athing').to_a
       raw_scores = doc.css('span.score').to_a
@@ -30,7 +28,8 @@ class HNScraper
       domains = article_urls.map { |url| extract_domain url  }
 
       count.times do |index|
-        post = HNPost.new(coder.decode(titles[index]),
+        puts(titles[index])
+        post = HNPost.new(titles[index],
                           scores[index],
                           comment_counts[index],
                           article_urls[index],
