@@ -1,10 +1,11 @@
 class RedditScraper
+  require 'benchmark'
   BASE_URL = 'https://www.reddit.com/r'
   ARTICLES_PER_PAGE = 25 # reddit default
 
   def self.get_posts(subreddit, count = 15)
 
-    page_count = (count / 25.0).ceil
+    page_count = (count / ARTICLES_PER_PAGE.to_f).ceil
 
     json = HTTParty.get("#{BASE_URL}/#{subreddit}/.json?count=#{count}",
                         headers: {'User-Agent' => 'news-app'})
@@ -14,7 +15,7 @@ class RedditScraper
     posts = []
 
     page_count.times do |page|
-      content = JSON.parse json.to_s, symbolize_names: true
+      content = JSON.parse json.to_s, symbolize_names: true 
       after = content[:data][:after]
 
       ARTICLES_PER_PAGE.times do |i|
@@ -26,7 +27,7 @@ class RedditScraper
                               data[:permalink],
                               data[:domain])
         posts.push post
-        break if posts.length == count
+        return posts if posts.length == count
       end
 
       json = HTTParty.get("#{BASE_URL}/#{subreddit}/.json?count=#{count}&after=#{after}",
