@@ -24,6 +24,16 @@ $sd_icon_background: #296465;
 $sd_secondary_text: #8CBBBB;
 
 // CONTENT COLORING
+.sd-title {
+	color: white;
+	&:hover {
+		color: white;
+	}
+	&:visited {
+		color: $sd_secondary_text;
+	}
+}
+
 .sd-row {
 	background-color: $sd_text_background;
 }
@@ -35,12 +45,32 @@ $sd_secondary_text: #8CBBBB;
 	}
 }
 
+.hn-title {
+	color: black;
+	&:hover {
+		color: black;
+	}
+	&:visited {
+		color: $hn_secondary_text;
+	}
+}
+
 .hn-row {
 	background-color: $hn_background;
 }
 
 .hn-secondary-text {
 	color: $hn_secondary_text;
+}
+
+.reddit-title {
+	color: blue;
+	&:hover {
+		color: blue;
+	}
+	&:visited {
+		color: purple;
+	}
 }
 
 .reddit-secondary-text {
