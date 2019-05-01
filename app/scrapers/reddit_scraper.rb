@@ -3,7 +3,7 @@ class RedditScraper
   BASE_URL = 'https://www.reddit.com/r'
   ARTICLES_PER_PAGE = 25 # reddit default
 
-  def self.get_posts(subreddit, count = 15)
+  def self.get_posts(subreddit = 'programming', count = 25)
 
     page_count = (count / ARTICLES_PER_PAGE.to_f).ceil
 

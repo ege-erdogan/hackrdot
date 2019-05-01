@@ -90,6 +90,7 @@ $sd_secondary_text: #8CBBBB;
 	background-color: $sd_icon_background;
 }
 
+// removes tabs' round corners
 .nav-link {
 -webkit-border-radius: 0 !important;
 -moz-border-radius: 0 !important;

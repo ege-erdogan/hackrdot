@@ -1,8 +1,7 @@
 class SDScraper
   BASE_URL = "https://slashdot.org"
-  ARTICLES_PER_PAGE = 15 # sd default
 
-  def self.get_posts(count = 15)
+  def self.get_posts(count = 25)
     coder = HTMLEntities.new  
     posts = []
 
