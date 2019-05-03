@@ -21,10 +21,10 @@ class HNScraper
       article_urls = valid_articles.map { |article| get_article_link article }
       scores = raw_scores.map { |score| score.inner_text.split(' ')[0] }
 
-      comment_counts = raw_comments.select{ |c| comment? c }
-                                   .map { |c| extract_comment_count c.inner_text }
+      comments = raw_comments.select{ |c| comment? c }
+      comment_counts = comments.map { |c| extract_comment_count c.inner_text }
+			hn_urls = comments.map { |c| form_hn_link c[:href]  }
 
-			hn_urls = raw_ids.map { |thing| form_hn_link thing[:id] }
       domains = article_urls.map { |url| extract_domain url  }
 
       count.times do |index|
