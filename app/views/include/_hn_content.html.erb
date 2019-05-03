@@ -19,9 +19,9 @@
           (<%= hn_post.domain %>)
         </small>
       </td>
-      <td style="width: 15%">
-        <a class="hn-secondary-text" href="<%= hn_post.hn_url %>" target="_blank">
-          <u><%= hn_post.comment_count %> <%= hn_post.comment_count == 1 ? 'comment' : 'comments' %> </u>
+      <td>
+        <a class="btn btn-secondary hn-comment-button btn-block btn-sm" href="<%= hn_post.hn_url %>" target="_blank">
+          <strong><%= hn_post.comment_count %></strong>
         </a>
       </td>
     </tr>
