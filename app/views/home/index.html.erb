@@ -1,37 +1,45 @@
 <div class="container">
-  <%= render "include/header" %>
+  <br>
+  <div class="row">
+    <div class="col-3">
+      <%= render 'include/header' %>
 
-  <ul class="nav nav-pills nav-fill dark" role="tablist">
-    <li class="nav-item">
-      <a class="nav-link active" id="hn-tab" href="#hn" data-toggle="pill" role="tab" aria-controls="hn" aria-selected="true">
-        <%= image_tag("hn_icon.png", :class => "mx-auto") %>
-      </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" id="reddit-tab" href="#reddit" data-toggle="pill" role="tab" aria-controls="reddit" aria-selected="false">
-        <%= image_tag("reddit_icon.png", :class => "mx-auto") %>
-      </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" id="sd-tab" href="#sd" data-toggle="pill" role="tab" aria-controls="sd" aria-selected="false">
-        <%= image_tag("sd_icon.png", :class => "mx-auto") %>
-      </a>
-    </li>
-  </ul>
+      <%= render "include/footer" %>
+    </div>
 
-  <div class="tab-content" id="content">
-    <div class="tab-pane show active" id="hn" role="tabpanel" aria-labelledby="hn-tab">
-      <%= render "include/hn_content" %>
+    <div class="col-9">
+      <ul class="nav nav-pills nav-fill dark" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" id="hn-tab" href="#hn" data-toggle="pill" role="tab" aria-controls="hn" aria-selected="true">
+            <%= image_tag("hn_icon.png", :class => "mx-auto") %>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="reddit-tab" href="#reddit" data-toggle="pill" role="tab" aria-controls="reddit" aria-selected="false">
+            <%= image_tag("reddit_icon.png", :class => "mx-auto") %>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="sd-tab" href="#sd" data-toggle="pill" role="tab" aria-controls="sd" aria-selected="false">
+            <%= image_tag("sd_icon.png", :class => "mx-auto") %>
+          </a>
+        </li>
+      </ul>
+
+      <div class="tab-content" id="content">
+        <div class="tab-pane show active" id="hn" role="tabpanel" aria-labelledby="hn-tab">
+          <%= render "include/hn_content" %>
+        </div>
+        <div class="tab-pane" id="reddit" role="tabpanel" aria-labelledby="reddit-tab">
+          <%= render "include/reddit_content" %>
+        </div>
+        <div class="tab-pane" id="sd" role="tabpanel" aria-labelledby="sd-tab">
+          <%= render "include/sd_content" %>
+        </div>
+      </div>  
     </div>
-    <div class="tab-pane" id="reddit" role="tabpanel" aria-labelledby="reddit-tab">
-      <%= render "include/reddit_content" %>
-    </div>
-    <div class="tab-pane" id="sd" role="tabpanel" aria-labelledby="sd-tab">
-      <%= render "include/sd_content" %>
-    </div>
+      
   </div>
-
-  <%= render "include/footer" %>
 </div>
 
 
