@@ -24,6 +24,7 @@ $reddit_lighter: #203640;
 $sd_text_background: #2A6564;
 $sd_icon_background: #296465;
 $sd_secondary_text: #8CBBBB;
+$sd_summary_background: #F2F2F2;
 
 // CONTENT COLORING
 .sd-title {
@@ -40,10 +41,35 @@ $sd_secondary_text: #8CBBBB;
 	background-color: $sd_text_background;
 }
 
+.sd-title-cell {
+	vertical-align: middle !important;
+	padding: 6px 10px 6px 10px !important;
+}
+
+.sd-spacer {
+	padding: 5px !important;
+}
+
 .sd-secondary-text {
 	color: $sd_secondary_text;
 	&:hover {
 		color: $sd_secondary_text;
+	}
+}
+
+.sd-summary-row {
+	background-color: $sd_summary_background;
+}
+
+.sd-summary-text {
+	margin-bottom: 0 !important;
+	font-size: small;
+	i {
+		display: block;
+		padding: 0 0 0 10px;
+		margin-top: 8px;
+		margin-bottom: 10px;
+		border-left: 3px solid $sd_secondary_text;
 	}
 }
 

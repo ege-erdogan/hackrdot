@@ -1,23 +1,40 @@
-<table class="table table-dark table-borderless">
+<table class="table table-borderless">
   <thead class="sd-filler">
     <th colspan="2">
       
     </th>
   </thead>
   <% @sd_posts.each do |sd_post| %>
+    <tr>
+      <td colspan="2" class="sd-spacer"></td>
+    </tr>
     <tr class="sd-row">
-      <td>
+      <td class="sd-title-cell">
         <a href="<%= sd_post.sd_url %>" class="sd-title" target="_blank">
           <strong>
             <%= sd_post.title %>
           </strong>
         </a>
+        <span class="sd-secondary-text">
+          <small><%= sd_post.domain %></small>  
+        </span>
       </td>
-      <td>
+      <td class="sd-title-cell">
         <a class="btn btn-dark btn-block btn-sm" href="<%= sd_post.sd_url %>" target="_blank">
           <strong><%= sd_post.comment_count %></strong>
         </a>
       </td>
+    </tr>
+    <tr>
+      <!-- SUMMARY -->
+      <td class="sd-summary-row" colspan="2">
+        <p class="sd-summary-text">
+          <%= sd_post.summary.html_safe %>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      
     </tr>
   <% end %>
 </table>

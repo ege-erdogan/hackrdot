@@ -18,11 +18,19 @@ class SDScraper
     summaries = []
 
     headers.each do |header|
+      puts header.inner_text
+    end
+
+    last = :domain
+    headers.each do |header|
       if header[:class] == 'story-sourcelnk'
         domains.push header.inner_text
+        last = :domain
       else 
+        domains.push(' ') if last == :title
         titles.push header.inner_text
         sd_urls.push header[:href]
+        last = :title
       end
     end
 
@@ -31,7 +39,11 @@ class SDScraper
     end
 
     summaries_raw.each do |summary|
-      summaries.push summary.children.to_s
+      html = summary.children.to_s
+      if html[-12..-1].include? '<br>'
+        html = html[0...-12]
+      end
+      summaries.push html
     end
 
     titles.each_with_index do |title, index|
