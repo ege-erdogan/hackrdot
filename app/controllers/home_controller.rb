@@ -1,5 +1,4 @@
 class HomeController < ApplicationController
-	require 'benchmark'
 
 	LIMIT = 25
 
