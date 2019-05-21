@@ -5,19 +5,57 @@ class SDScraper
     coder = HTMLEntities.new  
     posts = []
 
-    doc = Nokogiri::HTML(open("#{BASE_URL}/archive.pl"))
+    doc = Nokogiri::HTML(open(BASE_URL))
 
-    stories = doc.css('.main-content a')
-    comment_details = doc.css('.cmntcnt')
+    headers = doc.css('.story-title a')
+    comments = doc.css('.comment-bubble')
+    summaries_raw = doc.css('.p')
 
-    # start from 4 because first four links are unrelated
-    # there is no other query possible to remove them
-    stories[4..].each_with_index do |story, index|
-      posts.push  SDPost.new(coder.decode(story.inner_text),
-                             story[:href],
-                             comment_details[index].children[1].inner_text.split(' ')[0])
-      return posts if posts.length == count
+    titles = []
+    domains = []
+    comment_counts = []
+    sd_urls = []
+    summaries = []
+
+    headers.each do |header|
+      puts header.inner_text
     end
+
+    last = :domain
+    headers.each do |header|
+      if header[:class] == 'story-sourcelnk'
+        domains.push header.inner_text
+        last = :domain
+      else 
+        domains.push(' ') if last == :title
+        titles.push header.inner_text
+        sd_urls.push header[:href]
+        last = :title
+      end
+    end
+
+    comments.each do |comment|
+      comment_counts.push comment.children[0].inner_text
+    end
+
+    summaries_raw.each do |summary|
+      html = summary.children.to_s
+      if html[-12..-1].include? '<br>'
+        html = html[0...-12]
+      end
+      summaries.push html
+    end
+
+    titles.each_with_index do |title, index|
+      post = SDPost.new(title,
+                        sd_urls[index],
+                        comment_counts[index],
+                        domains[index],
+                        summaries[index])
+      posts.push post
+    end
+
+    return posts
   end
 
 end
