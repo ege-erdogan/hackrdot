@@ -15,19 +15,20 @@ class SDScraper
     domains = []
     comment_counts = []
     sd_urls = []
-    summaries = []
-
-    headers.each do |header|
-      puts header.inner_text
-    end
+    summaries = [] 
+    article_urls = []
 
     last = :domain
     headers.each do |header|
       if header[:class] == 'story-sourcelnk'
         domains.push header.inner_text
+        article_urls.push header[:href]
         last = :domain
       else 
-        domains.push(' ') if last == :title
+        if last == :title
+          domains.push(' ')
+          article_urls.push(' ')
+        end
         titles.push header.inner_text
         sd_urls.push header[:href]
         last = :title
@@ -51,7 +52,8 @@ class SDScraper
                         sd_urls[index],
                         comment_counts[index],
                         domains[index],
-                        summaries[index])
+                        summaries[index],
+                        article_urls[index])
       posts.push post
     end
 
