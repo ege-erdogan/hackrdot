@@ -39,6 +39,10 @@ class SDScraper
       comment_counts.push comment.children[0].inner_text
     end
 
+    while comment_counts.length < 15
+      comment_counts.prepend 0
+    end
+
     summaries_raw.each do |summary|
       html = summary.children.to_s
       if html[-12..-1].include? '<br>'
