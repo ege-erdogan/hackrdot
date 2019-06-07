@@ -1,5 +1,4 @@
 class RedditScraper
-  require 'benchmark'
   BASE_URL = 'https://www.reddit.com/r'
   ARTICLES_PER_PAGE = 25 # reddit default
 
