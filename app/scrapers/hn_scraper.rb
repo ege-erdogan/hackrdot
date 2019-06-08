@@ -28,12 +28,12 @@ class HNScraper
       domains = article_urls.map { |url| extract_domain url  }
 
       count.times do |index|
-        post = HNPost.new(titles[index],
-                          scores[index],
-                          comment_counts[index],
-                          article_urls[index],
-                          hn_urls[index],
-                          domains[index])
+				post = HNPost.new(titles[index],
+													comment_counts[index],
+													article_urls[index],
+													hn_urls[index],
+													domains[index],
+													scores[index])
         posts.push post
       end
     end

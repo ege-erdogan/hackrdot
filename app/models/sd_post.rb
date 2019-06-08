@@ -1,15 +1,11 @@
-class SDPost
+class SDPost < Post
 	include ActiveModel::Model
 
-	attr_accessor :title, :comment_count, :sd_url, :domain, :summary, :article_url
+	attr_accessor :summary
 
-	def initialize(title, sd_url, comment_count, domain, summary, article_url)
-		@title = title
-		@sd_url = sd_url
-		@comment_count = comment_count
-		@domain = domain
+	def initialize(title, comment_count, article_url, comments_url, domain, summary)
+		super(title, comment_count, article_url, comments_url, domain, 0)
 		@summary = summary
-		@article_url = article_url
 	end
 	
 end

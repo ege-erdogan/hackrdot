@@ -20,11 +20,11 @@ class RedditScraper
       ARTICLES_PER_PAGE.times do |i|
         data = content[:data][:children][i][:data]
         post = RedditPost.new(coder.decode(data[:title]),
-                              data[:num_comments],
-                              data[:ups],
-                              data[:url],
-                              data[:permalink],
-                              data[:domain])
+															data[:num_comments],
+															data[:url],
+															"https://reddit.com#{data[:permalink]}",
+															data[:domain],
+                              data[:ups])
         posts.push post
         return posts if posts.length == count
       end

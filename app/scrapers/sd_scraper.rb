@@ -52,12 +52,12 @@ class SDScraper
     end
 
     titles.each_with_index do |title, index|
-      post = SDPost.new(title,
-                        sd_urls[index],
-                        comment_counts[index],
+			post = SDPost.new(title,
+												comment_counts[index],
+												article_urls[index],
+												sd_urls[index],
                         domains[index],
-                        summaries[index],
-                        article_urls[index])
+                        summaries[index])
       posts.push post
     end
 
