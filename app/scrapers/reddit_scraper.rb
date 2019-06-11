@@ -30,7 +30,7 @@ class RedditScraper
       end
 
       json = HTTParty.get("#{BASE_URL}/#{subreddit}/.json?count=#{count}&after=#{after}",
-                        headers: {'User-Agent' => 'news-app'})
+                          headers: { 'User-Agent' => 'news-app' })
     end
 
     return posts

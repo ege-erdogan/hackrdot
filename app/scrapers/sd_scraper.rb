@@ -1,8 +1,7 @@
 class SDScraper
-  BASE_URL = "https://slashdot.org"
+  BASE_URL = 'https://slashdot.org'
 
-  def self.get_posts(count = 25)
-    coder = HTMLEntities.new  
+  def self.get_posts
     posts = []
 
     doc = Nokogiri::HTML(open(BASE_URL))

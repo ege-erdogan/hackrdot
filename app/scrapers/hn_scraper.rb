@@ -13,19 +13,18 @@ class HNScraper
       raw_articles = doc.css('.athing').to_a
       raw_scores = doc.css('span.score').to_a
       raw_comments = doc.css('td.subtext a').to_a
-      raw_ids = doc.css('tr.athing').to_a
 
-      valid_articles = raw_articles.select{ |link| valid_post? link }
-                           
-      titles = valid_articles.map { |post| extract_title post }
-      article_urls = valid_articles.map { |article| get_article_link article }
+      valid_articles = raw_articles.select(&method(:valid_post?))
+
+      titles = valid_articles.map(&method(:extract_title))
+      article_urls = valid_articles.map(&method(:get_article_link))
       scores = raw_scores.map { |score| score.inner_text.split(' ')[0] }
 
-      comments = raw_comments.select{ |c| comment? c }
+      comments = raw_comments.select(&method(:comment?))
       comment_counts = comments.map { |c| extract_comment_count c.inner_text }
-			hn_urls = comments.map { |c| form_hn_link c[:href]  }
+      hn_urls = comments.map { |c| form_hn_link c[:href]  }
 
-      domains = article_urls.map { |url| extract_domain url  }
+      domains = article_urls.map(&method(:extract_domain))
 
       count.times do |index|
 				post = HNPost.new(titles[index],
@@ -34,50 +33,50 @@ class HNScraper
 													hn_urls[index],
 													domains[index],
 													scores[index])
-        posts.push post
+    posts.push post
       end
     end
 
     return posts
   end
 
-  private
+  def self.extract_domain(url)
+    head = url.index('/') + 2
+    head += 4 if url.include?('www')
+    url = url[head..]
+    tail = url.index('/')
+    return url[0...tail]
+  end
 
-    def self.extract_domain(url)
-      head = url.index('/') + 2
-      head += 4 if url.include?('www')
-      url = url[head..]
-      tail = url.index('/')
-      return url[0...tail]
-    end
+  def self.extract_title(row)
+    return row.children[4].children[0].inner_text
+  end
 
-    def self.extract_title(row)
-      return row.children[4].children[0].inner_text
-    end
+  def self.valid_post?(row)
+    return row.children[3][:class] == 'votelinks'
+  end
 
-    def self.valid_post?(row)
-      return row.children[3][:class] == 'votelinks'
-    end
+  def self.get_article_link(content)
+    link = content.children[4].children[0][:href]
+    return form_hn_link(link) if link.include? 'item?id='
 
-    def self.get_article_link(content)
-      link = content.children[4].children[0][:href]
-      return form_hn_link(link) if link.include? "item?id="
-      return link
-    end
+    return link
+  end
 
-    def self.comment?(tag)
-      return (tag.to_s.include? 'comment' or tag.to_s.include? 'discuss')
-    end
+  def self.comment?(tag)
+    return (tag.to_s.include? 'comment' or tag.to_s.include? 'discuss')
+  end
 
-    def self.extract_comment_count(text)
-      return '0' if text.include?('discuss')
+  def self.extract_comment_count(text)
+    return '0' if text.include?('discuss')
 
-      return text.tr("\u00A0", ' ').split(' ')[0]
-    end
+    return text.tr("\u00A0", ' ').split(' ')[0]
+  end
 
-    def self.form_hn_link(id)
-      return "#{BASE_URL}/item?id=#{id}" unless id.include? 'item?id'
-      return "#{BASE_URL}/#{id}"
-    end
+  def self.form_hn_link(id)
+    return "#{BASE_URL}/item?id=#{id}" unless id.include? 'item?id'
+
+    return "#{BASE_URL}/#{id}"
+  end
 
 end
