@@ -1,2 +1,24 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<div class="container">
+	<br>
+	<h1>Create new user</h1>
+	<br>
+
+	<%= form_for(@user, url: signup_path) do |f| %>
+		<%= render 'include/error_messages' %>
+
+		<%= f.label :name %>
+		<%= f.text_field :name, class: 'form-control' %>
+
+		<%= f.label :email %>
+		<%= f.email_field :email, class: 'form-control' %>
+
+		<%= f.label :password %>
+		<%= f.password_field :password, class: 'form-control' %>
+
+		<%= f.label :password_confirmation, "Confirmation" %>
+		<%= f.password_field :password_confirmation, class: 'form-control' %>
+
+		<%= f.submit "Create account", class: 'btn btn-primary' %>
+	<% end %>
+
+</div>

@@ -1,4 +1,9 @@
 <br>
+
+<% flash.each do |message_type, message| %>
+  <div class="alert alert-<%= message_type %>"><%= message %></div>
+<% end %>
+
 <nav class="navbar navbar-light bg-light">
 	<a class="navbar-brand">News</a>
 	<span>
