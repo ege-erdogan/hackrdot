@@ -57,6 +57,7 @@ class SDScraper
 												sd_urls[index],
                         domains[index],
                         summaries[index])
+      
       posts.push post
     end
 

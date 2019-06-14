@@ -1,6 +1,6 @@
 <table class="table table-borderless">
   <thead class="reddit-filler">
-    <th colspan="3">
+    <th colspan="4">
     
     </th>
   </thead>
@@ -19,6 +19,13 @@
           (<%= reddit_post.domain %>)
         </small>
       </td>
+      <% if logged_in? %>
+        <td>
+          <a class="btn btn-secondary btn-block btn-sm" href="#">
+            Save
+          </a>
+        </td>
+      <% end %>
       <td>
         <a class="btn btn-secondary reddit-comment-button btn-block btn-sm" href="<%= reddit_post.comments_url %>" target="_blank">
           <strong><%= reddit_post.comment_count %></strong>
