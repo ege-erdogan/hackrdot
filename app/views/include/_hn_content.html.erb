@@ -20,11 +20,15 @@
         </small>
       </td>
       <% if logged_in? %>
-        <td>
-
-          <%= link_to "Save", bookmarks_path(user_id: current_user.id, comments_url: hn_post.comments_url, title: hn_post.title), class: "btn btn-secondary btn-block btn-sm", remote: true %>
-
-        </td>
+        <% if @saved_posts.include? hn_post.comments_url %>
+          <td>
+            Saved
+          </td>
+        <% else %>
+          <td>
+            <%= link_to "Save", bookmarks_path(user_id: current_user.id, comments_url: hn_post.comments_url, title: hn_post.title), class: "btn btn-secondary btn-block btn-sm", remote: true %>
+          </td>
+        <% end %>
       <% end %>
       <td>
         <a class="btn btn-secondary hn-comment-button btn-block btn-sm comment-button" href="<%= hn_post.comments_url %>" target="_blank">

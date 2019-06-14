@@ -20,7 +20,15 @@
         </small>
       </td>
       <% if logged_in? %>
-        <%= render 'include/save_button' %>
+        <% if @saved_posts.include? reddit_post.comments_url %>
+          <td>
+            Saved
+          </td>
+        <% else %>
+          <td>
+            <%= link_to "Save", bookmarks_path(user_id: current_user.id, comments_url: reddit_post.comments_url, title: reddit_post.title), class: "btn btn-secondary btn-block btn-sm", remote: true %>
+          </td>
+        <% end %>
       <% end %>
       <td>
         <a class="btn btn-secondary reddit-comment-button btn-block btn-sm comment-button" href="<%= reddit_post.comments_url %>" target="_blank">
