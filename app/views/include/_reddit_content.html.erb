@@ -20,14 +20,10 @@
         </small>
       </td>
       <% if logged_in? %>
-        <td>
-          <a class="btn btn-secondary btn-block btn-sm" href="#">
-            Save
-          </a>
-        </td>
+        <%= render 'include/save_button' %>
       <% end %>
       <td>
-        <a class="btn btn-secondary reddit-comment-button btn-block btn-sm" href="<%= reddit_post.comments_url %>" target="_blank">
+        <a class="btn btn-secondary reddit-comment-button btn-block btn-sm comment-button" href="<%= reddit_post.comments_url %>" target="_blank">
           <strong><%= reddit_post.comment_count %></strong>
         </a>
       </td>

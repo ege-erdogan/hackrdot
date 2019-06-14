@@ -20,14 +20,10 @@
         </span>
       </td>
       <% if logged_in? %>
-        <td>
-          <a class="btn btn-secondary btn-block btn-sm" href="#">
-            Save
-          </a>
-        </td>
+        <%= render 'include/save_button' %>
       <% end %>
       <td class="sd-title-cell">
-        <a class="btn btn-dark btn-block btn-sm" href="<%= sd_post.comments_url %>" target="_blank">
+        <a class="btn btn-dark btn-block btn-sm comment-button" href="<%= sd_post.comments_url %>" target="_blank">
           <strong><%= sd_post.comment_count %></strong>
         </a>
       </td>

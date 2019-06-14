@@ -26,6 +26,9 @@
     <% flash.each do |message_type, message| %>
       <div class="alert alert-<%= message_type %>"><%= message %></div>
     <% end %>
+    <% if logged_in? %>
+      <p id="user-id" style="display:none"> <%= current_user.id %> </p>
+    <% end %>
     <%= yield %>
   </body>
 </html>
