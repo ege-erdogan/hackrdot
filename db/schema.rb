@@ -26,8 +26,7 @@ ActiveRecord::Schema.define(version: 2019_06_14_192747) do
     t.index ["user_id"], name: "index_bookmarks_users_on_user_id"
   end
 
-  create_table "users", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "id"
+  create_table "users", id: :string, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.string "password_digest"

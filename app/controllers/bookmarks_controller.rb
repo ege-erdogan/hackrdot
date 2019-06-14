@@ -9,12 +9,12 @@ class BookmarksController < ApplicationController
 		user_id = params[:user_id]
 
 		bookmark = Bookmark.find_by(comments_url: comments_url)
-		if bookmark.nil
-			bookmark = Bookmark.new(title: title, comments_url: comments_url) if bookmark.nil
+		if !bookmark
+			bookmark = Bookmark.new(title: title, comments_url: comments_url)
 		end
 
-		user = User.find(user_id)
-		user.bookmarks << bookmark unless user.bookmark.include? bookmark
+		user = User.find_by(id: user_id)
+		user.bookmarks << bookmark unless user.bookmarks.include? bookmark
 	end
 
 	def destroy
