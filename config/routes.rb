@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
 	get '/users', to: 'users#show'
 
-	get '/bookmark', to: 'bookmarks#create', as: 'bookmarks'
+	get '/bookmarks/create', to: 'bookmarks#create', as: 'create_bookmark'
+	get '/bookmarks', to: 'bookmarks#show', as: 'show_bookmarks'
 
 end

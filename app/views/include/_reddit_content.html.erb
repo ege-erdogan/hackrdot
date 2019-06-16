@@ -26,7 +26,7 @@
           </td>
         <% else %>
           <td>
-            <%= link_to "Save", bookmarks_path(user_id: current_user.id, comments_url: reddit_post.comments_url, title: reddit_post.title), class: "btn btn-secondary btn-block btn-sm", remote: true %>
+            <%= link_to "Save", create_bookmark_path(user_id: current_user.id, comments_url: reddit_post.comments_url, title: reddit_post.title), class: "btn btn-secondary btn-block btn-sm", remote: true %>
           </td>
         <% end %>
       <% end %>

@@ -1,0 +1,6 @@
+<ul>
+	<% @bookmarks.each do |bookmark| %>
+		<p><%= bookmark.title %></p>
+		<p><%= bookmark.comments_url %></p>
+	<% end %>
+</ul>
