@@ -16,7 +16,11 @@
 		</ul>
 		<span>
 		<% if logged_in? %>
-			<a class="btn btn-outline-danger" href="/logout" role="button">Log out</a>
+			<%= link_to "My bookmarks", show_bookmarks_path(user_id: current_user.id), class: 'btn 
+				btn-outline-dark'%>
+			<%= link_to "Log out", logout_path, class: 'btn btn-outline-danger'%>
+			<!-- <a class="btn btn-outline-dark" href="/bookmarks/" role="button">Log out</a>
+			<a class="btn btn-outline-danger" href="/logout" role="button">Log out</a> -->
 		<% else %>
 			<a class="btn btn-light" href="/login" role="button">Login</a>
 			<a class="btn btn-outline-dark" href="/signup" role="button">Sign Up</a>
