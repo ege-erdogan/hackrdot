@@ -5,7 +5,8 @@ class BookmarksController < ApplicationController
 		if logged_in? && current_user.id == user_id
 			@bookmarks = User.find_by(id: user_id).bookmarks.reverse
 		else
-			# handle error
+			flash[:danger] = 'Something went wrong!'
+			redirect_to root_path
 		end
 	end
 

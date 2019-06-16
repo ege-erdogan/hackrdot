@@ -20,7 +20,7 @@
         </span>
       </td>
       <% if logged_in? %>
-        <% if @saved_posts.include? sd_post.comments_url %>
+        <% if @saved_posts.include? "https:#{sd_post.comments_url}" %>
           <td>
             Saved
           </td>
