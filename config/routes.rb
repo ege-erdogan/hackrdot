@@ -1,5 +1,7 @@
 Rails.application.routes.draw do	
 
+  get 'static_pages/about'
+  get 'static_pages/support'
   get 'sessions/new'
 	root 'home#index'
 
@@ -14,5 +16,9 @@ Rails.application.routes.draw do
 
 	get '/bookmarks/create', to: 'bookmarks#create', as: 'create_bookmark'
 	get '/bookmarks', to: 'bookmarks#show', as: 'show_bookmarks'
+
+	get '/about', to: 'static_pages#about'
+	get '/support', to: 'static_pages#support'
+
 
 end
