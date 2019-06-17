@@ -1,5 +1,7 @@
 class UseUuidForUsers < ActiveRecord::Migration[5.2]
   def change
+    drop_table :users
+
   	create_table :users, id: false do |t|
   		t.string :id, primary_key: true
   		t.string :name

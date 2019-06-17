@@ -13,9 +13,8 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: root
-  password: tky33333
-  socket: /tmp/mysql.sock
+  
+  socket: /cloudsql/programming-news:us-east1:news
 
 development:
   <<: *default
@@ -50,5 +49,5 @@ test:
 production:
   <<: *default
   database: news_production
-  username: news
-  password: <%= ENV['NEWS_DATABASE_PASSWORD'] %>
+  username: <%= ENV["DATABASE_USERNAME"] %>
+  password: <%= ENV["DATABASE_PASSWORD"] %>
