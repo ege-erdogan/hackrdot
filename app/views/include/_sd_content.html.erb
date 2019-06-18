@@ -16,22 +16,22 @@
           </strong>
         </a>
         <a href="<%= sd_post.article_url %>" class="sd-secondary-text" target="_blank">
-          <small><%= sd_post.domain %></small>  
-        </span>
+          <small><%= sd_post.domain %></small>
+        </a>
       </td>
       <% if logged_in? %>
         <% if @saved_posts.include? "https:#{sd_post.comments_url}" %>
           <td>
-            Saved
+            <%= link_to "", destroy_bookmark_path(user_id: current_user.id, comments_url: sd_post.comments_url, title: sd_post.title), class: "fas fa-bookmark sd-bookmark fa-lg", remote: true %>
           </td>
         <% else %>
           <td>
-            <%= link_to "Save", create_bookmark_path(user_id: current_user.id, comments_url: sd_post.comments_url, title: sd_post.title), class: "btn btn-secondary btn-block btn-sm", remote: true %>
+            <%= link_to "", create_bookmark_path(user_id: current_user.id, comments_url: sd_post.comments_url, title: sd_post.title), class: "far fa-bookmark sd-bookmark fa-lg", remote: true %>
           </td>
         <% end %>
       <% end %>
       <td class="sd-title-cell">
-        <a class="btn btn-dark btn-block btn-sm comment-button" href="<%= sd_post.comments_url %>" target="_blank">
+        <a class="btn btn-dark btn-block btn-sm comment-button sd-comment-button" href="<%= sd_post.comments_url %>" target="_blank">
           <strong><%= sd_post.comment_count %></strong>
         </a>
       </td>

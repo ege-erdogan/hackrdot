@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 	get '/users', to: 'users#show'
 
 	get '/bookmarks/create', to: 'bookmarks#create', as: 'create_bookmark'
+	get '/bookmarks/destroy', to: 'bookmarks#destroy', as: 'destroy_bookmark'
 	get '/bookmarks', to: 'bookmarks#show', as: 'show_bookmarks'
 
 	get '/about', to: 'static_pages#about'

@@ -29,6 +29,7 @@ $sd_text_background: #2A6564;
 $sd_icon_background: #296465;
 $sd_secondary_text: #8CBBBB;
 $sd_summary_background: #F2F2F2;
+$sd_button_background: #1E2329;
 
 // CONTENT COLORING
 .sd-title {
@@ -127,6 +128,11 @@ $sd_summary_background: #F2F2F2;
 	}
 }
 
+.sd-comment-button {
+	background-color: $sd_button_background !important;
+	border: none !important;
+}
+
 // TAB & NAVBAR COLORING
 #hn-tab, .hn-filler {
 	background-color: $hn_icon_background;
@@ -152,10 +158,28 @@ border-radius: 0 !important;
 	height: 100% !important;
 }	
 
+// icons
 
+.hn-bookmark {
+	&:hover {
+		color: $hn_icon_background;
+	}
+	color: $hn_icon_background;
+}
 
+.reddit-bookmark {
+	&:hover {
+		color: $reddit_icon_background;
+	}
+	color: $reddit_icon_background;
+}
 
-
+.sd-bookmark {
+	&:hover {
+		color: $sd_button_background;
+	}
+	color: $sd_button_background;
+}
 
 
 
