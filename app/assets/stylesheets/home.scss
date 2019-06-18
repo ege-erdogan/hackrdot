@@ -11,6 +11,10 @@ body {
 	font-family: 'Fira-Sans', sans-serif !important;
 }
 
+td {
+	vertical-align: middle !important;
+}
+
 // COLORS
 $hn_background: #F6F6F0;
 $hn_secondary_text: #898988;
