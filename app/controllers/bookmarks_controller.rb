@@ -29,6 +29,8 @@ class BookmarksController < ApplicationController
 		user_id = params[:user_id]
 		if logged_in? && current_user.id == user_id
 			user = User.find_by(id: user_id)
+			comments_url = params[:comments_url]
+			comments_url.prepend 'https:' if comments_url.include? 'slashdot.org/'
 			user.bookmarks.where(comments_url: params[:comments_url]).destroy_all
 		else 
 			flash[:danger] = 'Make sure you are logged in and not doing something strange.'

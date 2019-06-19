@@ -42,8 +42,26 @@
   let bookmarkButtons = Array.from(document.getElementsByClassName('fa-bookmark'));
   bookmarkButtons.forEach((button) => {
       button.addEventListener('click', () => {
-          button.classList.toggle('fas')
-          button.classList.toggle('far')
+          toggleBookmarkFill(button)
       })
   })
+
+  function toggleBookmarkFill(button) {
+    button.classList.toggle('fas')
+    button.classList.toggle('far')
+  }
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
