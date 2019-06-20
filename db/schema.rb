@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_14_192747) do
+ActiveRecord::Schema.define(version: 2019_06_20_123456) do
 
   create_table "bookmarks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2019_06_14_192747) do
   end
 
   create_table "bookmarks_users", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id"
+    t.string "user_id"
     t.bigint "bookmark_id"
     t.index ["bookmark_id"], name: "index_bookmarks_users_on_bookmark_id"
     t.index ["user_id"], name: "index_bookmarks_users_on_user_id"

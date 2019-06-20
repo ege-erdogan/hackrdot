@@ -1,13 +1,13 @@
 class User < ApplicationRecord
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
-	before_create :set_uuid
+	has_and_belongs_to_many :bookmarks
 
 	attr_accessor :remember_token
 
-	has_and_belongs_to_many :bookmarks
-
 	has_secure_password
+
+	before_create :set_uuid
 
 	before_save { email.downcase! }
 
