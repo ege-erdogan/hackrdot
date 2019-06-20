@@ -1,26 +1,38 @@
-<div class="container">
-	<br>
-	<h1>Create new user</h1>
-	<br>
+<div class="container" style="margin-top: 12.5%">
 
-	<%= form_for(@user, url: signup_path) do |f| %>
-		<%= render 'include/error_messages' %>
+	<div class="row justify-content-center">
+		<div class="col-sm-6" style="background-color: #F8F9FA; padding: 30px">
+			<h1 class="text-center">hackr.</h1>
 
-		<%= f.label :name %>
-		<%= f.text_field :name, class: 'form-control' %>
+			<%= form_for(@user, url: signup_path) do |f| %>
+				<%= render 'include/error_messages' %>
 
-		<%= f.label :email %>
-		<%= f.email_field :email, class: 'form-control' %>
+				<%= f.label :name, 'name' %>
+				<%= f.text_field :name, class: 'form-control' %>
+				<br>
+				<%= f.label :email, 'email' %>
+				<%= f.email_field :email, class: 'form-control' %>
+				<br>
+				<%= f.label :password, 'password' %>
+				<%= f.password_field :password, class: 'form-control' %>
+				<br>
+				<%= f.label :password_confirmation, "confirmation" %>
+				<%= f.password_field :password_confirmation, class: 'form-control' %>
 
-		<%= f.label :password %>
-		<%= f.password_field :password, class: 'form-control' %>
+				<br>
+				<%= f.submit "submit", class: 'btn btn-success btn-block' %>
+			<% end %>
+		</div>
 
-		<%= f.label :password_confirmation, "Confirmation" %>
-		<%= f.password_field :password_confirmation, class: 'form-control' %>
-		
-		<br>
-
-		<%= f.submit "Create account", class: 'btn btn-primary' %>
-	<% end %>
+		<div class="col-sm-6">
+			<p style="font-size: 24pt; padding-left: 30px">Sign up now</p>
+			<ul class="feature-list">
+				<li>Features</li>
+				<li>Good features.</li>
+				<li>10/10</li>
+				<li>WOW</li>
+			</ul>
+		</div>
+	</div>
 
 </div>
