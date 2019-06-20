@@ -21,9 +21,21 @@
 		</ul>
 		<span>
 		<% if logged_in? %>
-			<%= link_to "my bookmarks", show_bookmarks_path(user_id: current_user.id), class: 'btn 
-				btn-outline-dark'%>
-			<%= link_to "log out", logout_path, class: 'btn btn-outline-danger'%>
+			<div class="btn-toolbar">
+				<%= link_to "bookmarks", show_bookmarks_path(user_id: current_user.id), class: 'btn 
+					btn-light'%>
+
+				<div class="dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<strong> <%= current_user.name.split(' ')[0] %> </strong>
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<%= link_to "account", users_path(id: current_user.id), class: 'dropdown-item'%>
+						<%= link_to "log out", logout_path, class: 'dropdown-item'%>
+					</div>
+				</div>				
+			</div>
+
 		<% else %>
 			<%= form_for :session, url: login_path, html: {class: "form-inline"} do |f| %>
 				<%= f.email_field :email, class: 'form-control mr-sm-2', placeholder: 'email' %>
