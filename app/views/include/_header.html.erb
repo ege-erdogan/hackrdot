@@ -1,4 +1,5 @@
 <br>
+
 <% flash.each do |message_type, message| %>
 	<div class="alert alert-<%= message_type %>"><%= message %></div>
 <% end %>
@@ -8,6 +9,7 @@
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
+
 	<div class="collapse navbar-collapse" id="navbarSupportedContent">
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item">
@@ -23,11 +25,17 @@
 				btn-outline-dark'%>
 			<%= link_to "log out", logout_path, class: 'btn btn-outline-danger'%>
 		<% else %>
-			<a class="btn btn-light" href="/login" role="button">login</a>
-			<a class="btn btn-outline-dark" href="/signup" role="button">sign up</a>
+			<%= form_for :session, url: login_path, html: {class: "form-inline"} do |f| %>
+				<%= f.email_field :email, class: 'form-control mr-sm-2', placeholder: 'email' %>
+				<%= f.password_field :password, class: 'form-control mr-sm-2', placeholder: 'password' %>
+
+				<%= f.submit 'log in', class: 'btn btn-success mr-sm-2' %>
+				<a class="btn btn-outline-dark" href="/signup" role="button">sign up</a>
+			<% end %>
 		<% end %>	
 	</span>
 	</div>
+
 </nav>
 
 <br>

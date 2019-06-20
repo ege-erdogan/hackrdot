@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   get 'static_pages/about'
   get 'static_pages/support'
-  get 'sessions/new'
+
 	root 'home#index'
 
 	get '/signup', to: 'users#new'
@@ -19,6 +19,5 @@ Rails.application.routes.draw do
 
 	get '/about', to: 'static_pages#about'
 	get '/support', to: 'static_pages#support'
-
 
 end
