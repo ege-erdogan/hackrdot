@@ -185,7 +185,12 @@ border-radius: 0 !important;
 	color: black !important;
 }
 
-
+.delete-button {
+	&:hover {
+		color: red;
+	}
+	color: red;
+}
 
 
 

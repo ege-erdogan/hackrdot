@@ -1,6 +1,35 @@
-<ul>
-	<% @bookmarks.each do |bookmark| %>
-		<p><%= bookmark.title %></p>
-		<p><%= bookmark.comments_url %></p>
-	<% end %>
-</ul>
+<div class="container">
+	
+	<%= render 'include/header' %>
+
+	<table class="table table-borderless">
+		<tbody style="background-color: #F8F9FA">
+			<% @bookmarks.each do |bookmark| %>
+				<tr class="bookmark-row">
+					<% if bookmark.type == :hn_post %>
+						<td width="5px" class="hn-filler">
+						
+						</td>
+					<% elsif bookmark.type == :reddit_post %>
+						<td width="5px" class="reddit-filler">
+						
+						</td>
+					<% else %>
+						<td width="5px" class="sd-filler">
+						
+						</td>
+					<% end %>
+					<td>
+						<a href="<%= bookmark.comments_url %>" class="hn-title" target="_blank">
+							<%= bookmark.title %>
+						</a>
+					</td>
+					<td align="right">
+						<%= link_to '', handle_bookmark_path(user_id: current_user.id, comments_url: bookmark.comments_url, title: bookmark.title, source: 'bookmarks'), class: 'far fa-trash fa-lg delete-button', remote: true %>
+					</td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+
+</div>

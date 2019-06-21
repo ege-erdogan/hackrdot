@@ -22,11 +22,11 @@
       <% if logged_in? %>
         <% if @saved_posts.include? "https:#{sd_post.comments_url}" %>
           <td>
-            <%= link_to "", handle_bookmark_path(user_id: current_user.id, comments_url: sd_post.comments_url, title: sd_post.title), class: "fas fa-bookmark sd-bookmark fa-lg", remote: true %>
+            <%= link_to "", handle_bookmark_path(user_id: current_user.id, comments_url: sd_post.comments_url, title: sd_post.title, source: 'home'), class: "fas fa-bookmark sd-bookmark fa-lg", remote: true %>
           </td>
         <% else %>
           <td>
-            <%= link_to "", handle_bookmark_path(user_id: current_user.id, comments_url: sd_post.comments_url, title: sd_post.title), class: "far fa-bookmark sd-bookmark fa-lg", remote: true %>
+            <%= link_to "", handle_bookmark_path(user_id: current_user.id, comments_url: sd_post.comments_url, title: sd_post.title, source: 'home'), class: "far fa-bookmark sd-bookmark fa-lg", remote: true %>
           </td>
         <% end %>
       <% end %>
