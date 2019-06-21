@@ -9,7 +9,9 @@ module BookmarksHelper
 	end
 
 	def handle_bookmark(user_id, comments_url, title)
-		comments_url.prepend 'https:' if comments_url.include? 'slashdot.org/'
+		if comments_url.include?('slashdot.org/') && !comments_url.include?('https:')
+			comments_url.prepend 'https:'
+		end
 
 		bookmark = Bookmark.find_by(comments_url: comments_url)
 		if bookmark.nil?

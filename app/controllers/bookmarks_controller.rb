@@ -18,7 +18,9 @@ class BookmarksController < ApplicationController
 
 		if logged_in? && current_user.id == user_id
 			handle_bookmark(user_id, comments_url, title)
-			redirect_to show_bookmarks_path(user_id: user_id) if source == 'bookmarks'
+			if source == 'bookmarks'
+				redirect_to show_bookmarks_path(user_id: user_id)	
+			end
 		else
 			flash[:danger] = 'Make sure you are logged in.'
 			redirect_to root_path

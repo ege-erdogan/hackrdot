@@ -4,32 +4,49 @@
 
 	<table class="table table-borderless">
 		<tbody style="background-color: #F8F9FA">
-			<% @bookmarks.each do |bookmark| %>
-				<tr class="bookmark-row">
-					<% if bookmark.type == :hn_post %>
-						<td width="5px" class="hn-filler">
-						
-						</td>
-					<% elsif bookmark.type == :reddit_post %>
-						<td width="5px" class="reddit-filler">
-						
-						</td>
-					<% else %>
-						<td width="5px" class="sd-filler">
-						
-						</td>
-					<% end %>
+			<% if @bookmarks.count.zero? %>
+				<tr>
 					<td>
-						<a href="<%= bookmark.comments_url %>" class="hn-title" target="_blank">
-							<%= bookmark.title %>
-						</a>
-					</td>
-					<td align="right">
-						<%= link_to '', handle_bookmark_path(user_id: current_user.id, comments_url: bookmark.comments_url, title: bookmark.title, source: 'bookmarks'), class: 'far fa-trash fa-lg delete-button', remote: true %>
+						<p class="text-center"> You don't have any bookmarks yet. </p>
 					</td>
 				</tr>
+			<% else %>
+				<% @bookmarks.each do |bookmark| %>
+					<tr class="bookmark-row">
+						<% if bookmark.type == :hn_post %>
+							<td width="5px" class="hn-filler">
+							
+							</td>
+						<% elsif bookmark.type == :reddit_post %>
+							<td width="5px" class="reddit-filler">
+							
+							</td>
+						<% else %>
+							<td width="5px" class="sd-filler">
+							
+							</td>
+						<% end %>
+						<td>
+							<a href="<%= bookmark.comments_url %>" class="hn-title" target="_blank">
+								<%= bookmark.title %>
+							</a>
+						</td>
+						<td align="right">
+							<%= link_to '', handle_bookmark_path(user_id: current_user.id, comments_url: bookmark.comments_url, title: bookmark.title, source: 'bookmarks'), class: 'far fa-trash fa-lg delete-button', remote: true %>
+						</td>
+					</tr>
+				<% end %>
 			<% end %>
 		</tbody>
 	</table>
 
 </div>
+
+<script>
+	var deleteButtons = Array.from(document.getElementsByClassName('delete-button'))
+	deleteButtons.forEach((button) => {
+		button.addEventListener('click', () => {
+			button.parentElement.parentElement.style.display = 'none'
+		})
+	})
+</script>
