@@ -1,7 +1,6 @@
 module BookmarksHelper
 
 	def create_bookmark(user, bookmark)
-		puts user.id
 		user.bookmarks << bookmark
 	end
 
