@@ -43,10 +43,12 @@
 </div>
 
 <script>
-	var deleteButtons = Array.from(document.getElementsByClassName('delete-button'))
-	deleteButtons.forEach((button) => {
-		button.addEventListener('click', () => {
-			button.parentElement.parentElement.style.display = 'none'
+	$(document).ready(function() {
+		let deleteButtons = Array.from(document.getElementsByClassName('delete-button'))
+		deleteButtons.forEach((button) => {
+			button.addEventListener('click', () => {
+				button.parentElement.parentElement.style.display = 'none'
+			})
 		})
-	})
+	});
 </script>
