@@ -1,8 +1,9 @@
-<div class="container" style="margin-top: 12.5%">
+<div class="container" style="margin-top: 10%">
 
 	<div class="row justify-content-center">
 		<div class="col-sm-6 signup-form" style="background-color: #F8F9FA; padding: 30px">
 			<h1 class="text-center">hackr.</h1>
+			<h3 class="text-muted">create an account</h3>
 
 			<%= form_for(@user, url: signup_path) do |f| %>
 				<%= render 'include/error_messages' %>
@@ -24,15 +25,6 @@
 			<% end %>
 		</div>
 
-		<div class="col-sm-6">
-			<p style="font-size: 24pt; padding-left: 30px">Sign up now</p>
-			<ul class="feature-list">
-				<li>Features</li>
-				<li>Good features.</li>
-				<li>10/10</li>
-				<li>WOW</li>
-			</ul>
-		</div>
 	</div>
 
 </div>
