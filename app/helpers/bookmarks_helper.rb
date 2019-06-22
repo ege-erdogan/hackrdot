@@ -5,7 +5,8 @@ module BookmarksHelper
 	end
 
 	def delete_bookmark(user, bookmark)
-		user.bookmarks.where(comments_url: bookmark.comments_url).destroy_all
+		user.bookmarks.delete bookmark
+		bookmark.destroy if bookmark.users.count.zero?
 	end
 
 	def handle_bookmark(user_id, comments_url, title)
