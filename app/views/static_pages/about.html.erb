@@ -1,2 +1,50 @@
-<h1>StaticPages#about</h1>
-<p>Find me in app/views/static_pages/about.html.erb</p>
+<div class="container">
+
+	<%= render 'include/header' %>
+
+	<h1 id="abouthackrdot">About Hackrdot</h1>
+
+	<p>If you are a programmer, then you've most likely visited Hacker News, r/programming, or Slashdot at least once. It is even more likely that you browse them almost on a daily basis. </p>
+
+	<p>It is true they can consume lots of time, but they are important resources in moderation to keep in touch with what is happening around the world.</p>
+
+	<h3 id="why">Why?</h3>
+
+	<p>I used to browse through those sites pretty often, and there were different problems I was having with each of those sites:</p>
+
+	<ul>
+	<li>r/progrmaming and Slashdot UIs could become distractive with all the flashy ads and buttons that I don't really need.</li>
+
+	<li>r/programming's endless scroll meant I could spend indefinite amounts of time there. </li>
+
+	<li>There was no easy way to bookmark posts in Hacker News and Slashdot. </li>
+	</ul>
+
+	<p>So I ended up creating Hackrdot. Origin of the name should be pretty obvious. With Hackrdot, I was able to:</p>
+
+	<ul>
+	<li>Save posts from all three sites in a single location.</li>
+
+	<li>Limit my time as there is no infinite scroll, or even a second page. Front page was more than I needed.</li>
+
+	<li>Have a single, consistent UI that provides all the information I needed with minimal bloat.</li>
+	</ul>
+
+	<p>In the beginning, it was site for my use alone, and after some use and improvements I decided to make it public. </p>
+
+	<h3 id="how">How?</h3>
+
+	<p>Hackrdot is mainly built with Rails, a good framework to build such personal projects in a rapid way. </p>
+
+	<p>The Nokogiri gem is used to scrape content from Hacker News and Slashdot, while Reddit's API is used for r/programming.</p>
+
+	<p>A MySQL database is where the user data and bookmarks are saved.</p>
+
+	<p>Finally, it is all hosted on <code>&lt;CLOUD PROVIDER&gt;</code>.</p>
+
+	<p>The code may or may not be found at https://github.com/ege-erdogan/hackrdot. I am not sure on keeping the code public.</p>
+
+	<hr />
+
+	<p>If you spot anything wrong, or request a new feature, feel free to email me at ege@erdogan.dev.</p>
+</div>
