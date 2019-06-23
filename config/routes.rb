@@ -14,6 +14,5 @@ Rails.application.routes.draw do
 	get '/bookmarks', to: 'bookmarks#show', as: 'show_bookmarks'
 
 	get '/about', to: 'static_pages#about'
-	get '/support', to: 'static_pages#support'
 
 end
