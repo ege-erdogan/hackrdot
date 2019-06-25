@@ -1,48 +1,46 @@
 <div class="container">
-
 	<%= render 'include/header' %>
 
 	<h1 id="abouthackrdot">About Hackrdot</h1>
 
-	<p>If you are a programmer, then you've most likely visited Hacker News, r/programming, or Slashdot at least once. It is even more likely that you browse them almost on a daily basis. </p>
+	<p>If you are a programmer, or simply interested in technology in general, then you've most likely visited <a href="https://news.ycombinator.com" target="_blank">Hacker News</a>, <a href="https://reddit.com/r/programming" target="_blank">r/programming</a>, and <a href="https://slashdot.org" target="_blank">Slashdot</a>. Chances are you visit them almost on a daily basis. </p>
 
-	<p>It is true they can consume lots of time, but they are important resources in moderation to keep in touch with what is happening around the world.</p>
+	<p>They can consume high amounts of valuable time by dragging you from one link to another if you are not careful, but they are important resources to keep in touch with what is happening around the world. </p>
 
 	<h3 id="why">Why?</h3>
 
-	<p>I used to browse through those sites pretty often, and there were different problems I was having with each of those sites:</p>
+	<p>I used to visit those sites frequently, and I realized I was having different problems with each of them:</p>
 
 	<ul>
-	<li>r/progrmaming and Slashdot UIs could become distractive with all the flashy ads and buttons that I don't really need.</li>
+	<li>r/programming and Slashdot UIs could easily become distractive with all the flashy ads and buttons I don't really need.</li>
 
-	<li>r/programming's endless scroll meant I could spend indefinite amounts of time there. </li>
+	<li>r/programming's endless scroll meant I could spend indefinite amounts of time there looking for interesting content.</li>
 
-	<li>There was no easy way to bookmark posts in Hacker News and Slashdot. </li>
+	<li>There was no easy way to bookmark posts on Hacker News and Slashdot.</li>
 	</ul>
 
-	<p>So I ended up creating Hackrdot. Origin of the name should be pretty obvious. With Hackrdot, I was able to:</p>
+	<p>So I ended up building Hackrdot (origin of the name should be pretty obvious) to fix the problems I was having in one place. It was for my personal use alone in the beginning, but I decided to make it public after some additions.</p>
 
 	<ul>
-	<li>Save posts from all three sites in a single location.</li>
+	<li>I could save posts from all three sites in a single place.</li>
 
-	<li>Limit my time as there is no infinite scroll, or even a second page. Front page was more than I needed.</li>
+	<li>Better manage my time as there is no infinite scroll. Not even a second page. Frontpage was more than I needed.</li>
 
-	<li>Have a single, consistent UI that provides all the information I needed with minimal bloat.</li>
+	<li>Have a single, consistent UI that provides all the information I needed without any bloat.</li>
 	</ul>
-
-	<p>In the beginning, it was site for my use alone, and after some use and improvements I decided to make it public. </p>
 
 	<h3 id="how">How?</h3>
 
-	<p>Hackrdot is mainly built with Rails, a good framework to build such personal projects in a rapid way. </p>
+	<p>Hackrdot is built with <a href="https://rubyonrails.org" target="_blank">Ruby on Rails</a>, a good framework to build such personal projects in a rapid way.</p>
 
-	<p>The Nokogiri gem is used to scrape content from Hacker News and Slashdot, while Reddit's API is used for r/programming.</p>
+	<p><a href="https://github.com/sparklemotion/nokogiri" target="_blank">The Nokogiri gem</a> is used to scrape content from HN and Slashdot, the <a href="https://www.reddit.com/dev/api/" target="_blank">Reddit API</a> is used for r/programming. </p>
 
-	<p>A MySQL database is where the user data and bookmarks are saved.</p>
+	<p>A MySQL database is used to store user data and bookmarks. </p>
 
-	<p>The code may or may not be found at [here](https://github.com/ege-erdogan/hackrdot). I am not sure on keeping the code public.</p>
+	<p>The source code may be found here.</p>
 
 	<hr />
 
-	<p>If you spot anything wrong, or request a new feature, feel free to email me at ege@erdogan.dev.</p>
+	<p>If you spot anything wrong, or simply have a suggestion, feel free to email me at <em>ege@erdogan.dev</em>.</p>
+
 </div>
