@@ -12,4 +12,8 @@ class Bookmark < ApplicationRecord
 		end
 	end
 
+	def from_domain?(domain)
+		self.comments_url.include? domain
+	end
+
 end

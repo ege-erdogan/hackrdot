@@ -2,8 +2,14 @@ class BookmarksController < ApplicationController
 
 	def show
 		user_id = params[:user_id]
+		site = params[:site]
+
 		if logged_in? && current_user.id == user_id
 			@bookmarks = User.find_by(id: user_id).bookmarks.reverse
+			if !site.nil?
+				@bookmarks.filter!{ |bookmark| bookmark.from_domain? site }
+				@filter_applied = true
+			end
 		else
 			flash[:danger] = 'Make sure you are logged in.'
 			redirect_to root_path
