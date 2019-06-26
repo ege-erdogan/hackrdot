@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_20_123456) do
+ActiveRecord::Schema.define(version: 2019_06_26_074811) do
 
   create_table "bookmarks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 2019_06_20_123456) do
     t.string "remember_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "subscribed"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
