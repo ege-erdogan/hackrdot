@@ -47,4 +47,12 @@ class User < ApplicationRecord
 		self.id = SecureRandom.uuid
 	end
 
+	def subscribe!
+		update_attribute(:subscribed, true)
+	end
+
+	def unsubscribe!
+		update_attribute(:subscribed, false)
+	end
+
 end	

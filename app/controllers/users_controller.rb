@@ -20,6 +20,17 @@ class UsersController < ApplicationController
 		end
 	end
 
+	def subscribe
+		user_id = params[:user_id]
+		if logged_in? && current_user.id == user_id
+			current_user.subscribe!
+			flash[:success] = 'Thank you for subscribing to the mailing list!'
+		else
+			flash[:danger] = 'Make sure you are logged in.'
+		end
+		redirect_to root_path
+	end
+
 	private 
 
 		def user_params
