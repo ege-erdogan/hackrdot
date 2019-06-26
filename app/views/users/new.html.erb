@@ -21,6 +21,12 @@
 				<%= f.password_field :password_confirmation, class: 'form-control' %>
 
 				<br>
+
+				<%= f.check_box :subscribed %>
+				<%= f.label :subscribed, 'subscribe to the weekly mailing list' %>
+
+				<br>
+				<br>
 				<%= f.submit "submit", class: 'btn btn-success btn-block' %>
 			<% end %>
 		</div>
