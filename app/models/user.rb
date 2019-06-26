@@ -51,8 +51,4 @@ class User < ApplicationRecord
 		update_attribute(:subscribed, true)
 	end
 
-	def unsubscribe!
-		update_attribute(:subscribed, false)
-	end
-
 end	
