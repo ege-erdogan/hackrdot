@@ -20,32 +20,46 @@
 				<%= link_to "about", about_path, class: 'nav-link' %>
 			</li>
 		</ul>
-		<span>
-		<% if logged_in? %>
-			<div class="btn-toolbar">
-				<%= link_to "bookmarks", show_bookmarks_path(user_id: current_user.id), class: 'btn 
-					btn-light'%>
 
-				<div class="dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						<strong> <%= current_user.name.split(' ')[0] %> </strong>
-					</a>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<%= link_to "log out", logout_path, class: 'dropdown-item'%>
-					</div>
-				</div>				
-			</div>
+		<% if logged_in? %>
+
+			<% if !current_user.subscribed? %>
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item">
+						<%= link_to "subscribe to the mailing list", 
+												subscribe_path(user_id: current_user.id),
+												class: 'btn btn-outline-dark' %>
+					</li>
+				</ul>
+			<% end %>
+
+			<span>
+				<div class="btn-toolbar">
+					<%= link_to "bookmarks", show_bookmarks_path(user_id: current_user.id), class: 'btn 
+						btn-light'%>
+
+					<div class="dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<strong> <%= current_user.name.split(' ')[0] %> </strong>
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<%= link_to "log out", logout_path, class: 'dropdown-item'%>
+						</div>
+					</div>				
+				</div>
+			</span>
 
 		<% else %>
-			<%= form_for :session, url: login_path, html: {class: "form-inline"} do |f| %>
-				<%= f.email_field :email, class: 'form-control mr-sm-2', placeholder: 'email' %>
-				<%= f.password_field :password, class: 'form-control mr-sm-2', placeholder: 'password' %>
+			<span>
+				<%= form_for :session, url: login_path, html: {class: "form-inline"} do |f| %>
+					<%= f.email_field :email, class: 'form-control mr-sm-2', placeholder: 'email' %>
+					<%= f.password_field :password, class: 'form-control mr-sm-2', placeholder: 'password' %>
 
-				<%= f.submit 'log in', class: 'btn btn-outline-dark mr-sm-2' %>
-				<a class="btn btn-success" href="/signup" role="button">sign up</a>
-			<% end %>
+					<%= f.submit 'log in', class: 'btn btn-outline-dark mr-sm-2' %>
+					<a class="btn btn-success" href="/signup" role="button">sign up</a>
+				<% end %>
+			</span>
 		<% end %>	
-	</span>
 	</div>
 
 </nav>
