@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_27_105948) do
+ActiveRecord::Schema.define(version: 2019_06_27_132309) do
 
   create_table "bookmarks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
@@ -27,11 +27,11 @@ ActiveRecord::Schema.define(version: 2019_06_27_105948) do
   end
 
   create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "score"
-    t.string "comments_url"
-    t.string "article_url"
-    t.integer "comment_count"
     t.string "title"
+    t.string "article_url"
+    t.string "comments_url"
+    t.integer "comment_count"
+    t.integer "score"
     t.string "domain"
     t.string "summary"
     t.string "type"

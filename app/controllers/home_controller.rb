@@ -1,11 +1,15 @@
 class HomeController < ApplicationController
-
-	LIMIT = 25
+	include Scraper
+	include HomeHelper
   
   def index
-    @hn_posts = HNScraper.get_posts(LIMIT)
-    @sd_posts = SDScraper.get_posts
-    @reddit_posts = RedditScraper.get_posts('programming', LIMIT)
+  	if read_from_database?
+  		posts = Post.all
+  		@hn_posts, @sd_posts, @reddit_posts = seperate_posts(posts)
+  	else
+  		@hn_posts, @sd_posts, @reddit_posts = fetch_posts
+  	end
+
     if logged_in?
     	@saved_posts = current_user.bookmarks.map(&:comments_url)
     end

@@ -14,7 +14,7 @@ module Scraper
 		SD: 'SLASHDOT'
 	}
 
-	def get_posts
+	def fetch_posts
 		hn_posts = get_hn_posts
 		sd_posts = get_sd_posts
 		reddit_posts = get_reddit_posts
@@ -22,6 +22,8 @@ module Scraper
 		posts = hn_posts + sd_posts + reddit_posts
 
 		posts.each(&:save)
+
+		return hn_posts, sd_posts, reddit_posts
 	end
 
 	private 
