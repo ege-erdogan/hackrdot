@@ -28,4 +28,6 @@
 
 /.idea
 
+*/.DS_Store
+
 app.yaml
