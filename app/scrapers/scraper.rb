@@ -1,10 +1,8 @@
 module Scraper
 	require 'open-uri'
-	include HNHelper
-	include SDHelper
-	include RedditHelper
+	include HnHelper
 
-	HN_URL = 'https://news.ycombinator.com/news'
+	HN_URL = 'https://news.ycombinator.com'
 	SD_URL = 'https://slashdot.org'
 	REDDIT_URL = 'https://www.reddit.com/r/programming/.json'
 
@@ -29,7 +27,7 @@ module Scraper
 	private 
 
 		def get_hn_posts
-			doc = Nokogiri::HTML(open(HN_URL))
+			doc = Nokogiri::HTML(open(HN_URL), nil, Encoding::UTF_8.to_s)
 			posts = []
 
 			raw_articles = doc.css('.athing').to_a
@@ -53,11 +51,11 @@ module Scraper
       	post = Post.new
       	post.title = title
       	post.article_url = article_urls[index]
-      	post.comments_url = comment_urls[index]
+      	post.comments_url = hn_urls[index]
       	post.domain = domains[index]
       	post.score = scores[index]
       	post.comment_count = comment_counts[index]
-      	post.type = TYPE[:HN]
+      	post.site = TYPE[:HN]
 
       	posts.push post
       end
@@ -114,13 +112,6 @@ module Scraper
 	    end
 
 	    titles.each_with_index do |title, index|
-				post = SDPost.new(title,
-													comment_counts[index],
-													article_urls[index],
-													sd_urls[index],
-	                        domains[index],
-	                        summaries[index])
-
 				post = Post.new
 				post.title = title
 				post.comment_count = comment_counts[index]
@@ -128,7 +119,7 @@ module Scraper
 				post.comments_url = sd_urls[index]
 				post.domain = domains[index]
 				post.summary = summaries[index]
-				post.type = TYPE[:SD]
+				post.site = TYPE[:SD]
 	      
 	      posts.push post
 	    end
@@ -141,7 +132,7 @@ module Scraper
 			coder = HTMLEntities.new
 			posts = []
 
-			content = JSON.parse json.to_s, symbolize_names: true 
+			content = JSON.parse doc.to_s, symbolize_names: true 
 
       25.times do |i|
         data = content[:data][:children][i][:data]
@@ -153,7 +144,7 @@ module Scraper
         post.comments_url = "https://reddit.com#{data[:permalink]}"
         post.domain = data[:domain]
         post.score = data[:ups]
-        post.type = TYPE[:REDDIT]
+        post.site = TYPE[:REDDIT]
 
         posts.push post
       end

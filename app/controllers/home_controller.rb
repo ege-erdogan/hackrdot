@@ -7,6 +7,7 @@ class HomeController < ApplicationController
   		posts = Post.all
   		@hn_posts, @sd_posts, @reddit_posts = seperate_posts(posts)
   	else
+      Post.delete_all
   		@hn_posts, @sd_posts, @reddit_posts = fetch_posts
   	end
 

@@ -1,14 +1,11 @@
 module HomeHelper 
 
 	def seperate_posts(posts)
-		# seperate the posts into three groups
-		# w.r.t to their 'type' field
-		# return all three lists at once
 		hn_posts = []
 		sd_posts = []
 		reddit_posts = []
 		posts.each do |post|
-			case post.type
+			case post.site
 			when 'HACKER_NEWS'
 				hn_posts.push post
 			when 'SLASHDOT'
@@ -22,18 +19,18 @@ module HomeHelper
 	end
 
 	def read_from_database?
-		# check the 'created_at' date of the first post
-		# if it is less than the threshold return true
-		# otherwise return false
 		post = Post.first
 
 		return false if post.nil?
 
-		creation_time = Post.created_at
-		now = Time.now
+		update_time = post.created_at
+		time_since_update = Time.now - update_time
 
-		return now - creation_time > 600 # 10 minutes
-		
+		puts "------------------------------"
+		puts "Time since last update: #{time_since_update} seconds."
+		puts "------------------------------"
+
+		return time_since_update < 600 # 10 minutes
 	end
 
 end
