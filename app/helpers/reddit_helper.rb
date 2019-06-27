@@ -1,0 +1,2 @@
+module RedditHelper
+end
