@@ -9,13 +9,13 @@
 			</button>
 			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 				<%= link_to "hacker news", 
-						show_bookmarks_path(user_id: current_user.id, site: "news.ycombinator.com"),
+						show_bookmarks_path(site: "news.ycombinator.com"),
 						class: 'dropdown-item' %>
 				<%= link_to "r/programming", 
-						show_bookmarks_path(user_id: current_user.id, site: "reddit.com/r/programming"),
+						show_bookmarks_path(site: "reddit.com/r/programming"),
 						class: 'dropdown-item' %>
 				<%= link_to "slashdot", 
-						show_bookmarks_path(user_id: current_user.id, site: "slashdot.org"),
+						show_bookmarks_path(site: "slashdot.org"),
 						class: 'dropdown-item' %>
 			</div>
 		</div>
