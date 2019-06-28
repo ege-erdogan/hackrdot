@@ -7,13 +7,12 @@
 
     <meta charset="UTF-8">
     <meta name="description" content="A reader for Hacker News, r/programming, and Slashdot.">
-    <meta name="keywords" content="hacker news, reddit, programming, slashdot, technology, news"
+    <meta name="keywords" content="hacker news, reddit, programming, slashdot, technology, news">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
     <% if Rails.env == 'production' %>
-      <!-- Global site tag (gtag.js) - Google Analytics -->
       <script async src="https://www.googletagmanager.com/gtag/js?id=UA-137899292-3"></script>
       <script>
         window.dataLayer = window.dataLayer || [];
