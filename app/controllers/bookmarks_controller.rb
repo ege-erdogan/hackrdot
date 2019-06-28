@@ -19,10 +19,9 @@ class BookmarksController < ApplicationController
 		if logged_in?
 			comments_url = params[:comments_url]
 			title = params[:title]
-			user_id = session[:user_id]
 			source = params[:source]
 
-			handle_bookmark(user_id, comments_url, title)
+			handle_bookmark(comments_url, title)
 			if source == 'bookmarks'
 				redirect_to show_bookmarks_path(user_id: user_id)	
 			end

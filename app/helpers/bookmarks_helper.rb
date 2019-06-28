@@ -9,7 +9,7 @@ module BookmarksHelper
 		bookmark.destroy if bookmark.users.count.zero?
 	end
 
-	def handle_bookmark(user_id, comments_url, title)
+	def handle_bookmark(comments_url, title)
 		if comments_url.include?('slashdot.org/') && !comments_url.include?('https:')
 			comments_url.prepend 'https:'
 		end

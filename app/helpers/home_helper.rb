@@ -19,8 +19,9 @@ module HomeHelper
 	end
 
 	def read_from_database?
-		post = Post.first
+		return false if Post.count > 70 # there should be max. 70 posts to display
 
+		post = Post.first
 		return false if post.nil?
 
 		update_time = post.created_at
@@ -28,5 +29,5 @@ module HomeHelper
 
 		return time_since_update < 600 # 10 minutes
 	end
-
+	
 end
