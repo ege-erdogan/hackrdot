@@ -1,11 +1,11 @@
 module BookmarksHelper
 
-	def create_bookmark(user, bookmark)
-		user.bookmarks << bookmark
+	def create_bookmark(bookmark)
+		current_user.bookmarks << bookmark
 	end
 
-	def delete_bookmark(user, bookmark)
-		user.bookmarks.delete bookmark
+	def delete_bookmark(bookmark)
+		current_user.bookmarks.delete bookmark
 		bookmark.destroy if bookmark.users.count.zero?
 	end
 
@@ -19,12 +19,10 @@ module BookmarksHelper
 			bookmark = Bookmark.new(title: title, comments_url: comments_url)
 		end
 
-		user = User.find_by(id: user_id)
-
-		if user.bookmarks.include? bookmark
-			delete_bookmark(user, bookmark)
+		if current_user.bookmarks.include? bookmark
+			delete_bookmark(bookmark)
 		else
-			create_bookmark(user, bookmark)
+			create_bookmark(bookmark)
 		end
 	end
 

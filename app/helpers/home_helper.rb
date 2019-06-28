@@ -26,10 +26,6 @@ module HomeHelper
 		update_time = post.created_at
 		time_since_update = Time.now - update_time
 
-		puts "------------------------------"
-		puts "Time since last update: #{time_since_update} seconds."
-		puts "------------------------------"
-
 		return time_since_update < 600 # 10 minutes
 	end
 

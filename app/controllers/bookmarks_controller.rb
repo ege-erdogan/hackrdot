@@ -2,10 +2,9 @@ class BookmarksController < ApplicationController
 
 	def show
 		if logged_in?
-			user_id = session[:user_id]
-			site = params[:site]
+			@bookmarks = current_user.bookmarks.reverse
 
-			@bookmarks = User.find_by(id: user_id).bookmarks.reverse
+			site = params[:site]
 			if !site.nil?
 				@bookmarks.filter!{ |bookmark| bookmark.from_domain? site }
 				@filter_applied = true
