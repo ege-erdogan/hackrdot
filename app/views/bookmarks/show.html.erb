@@ -1,75 +1,73 @@
-<div class="container">
-	
-	<%= render 'include/header' %>
+<%= render 'include/header' %>
 
-	<div class="row">
-		<div class="col-sm-2">
-			<div class="dropdown">
-				<button class="btn btn-light dropdown-toggle btn-block" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-								aria-haspopup="true" aria-expanded="false">
-					filter by site					
-				</button>
-				<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-					<%= link_to "hacker news", 
-							show_bookmarks_path(user_id: current_user.id, site: "news.ycombinator.com"),
-							class: 'dropdown-item' %>
-					<%= link_to "r/programming", 
-							show_bookmarks_path(user_id: current_user.id, site: "reddit.com/r/programming"),
-							class: 'dropdown-item' %>
-					<%= link_to "slashdot", 
-							show_bookmarks_path(user_id: current_user.id, site: "slashdot.org"),
-							class: 'dropdown-item' %>
-				</div>
+<div class="row">
+	<div class="col-sm-2">
+		<div class="dropdown">
+			<button class="btn btn-light dropdown-toggle btn-block" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+							aria-haspopup="true" aria-expanded="false">
+				filter by site					
+			</button>
+			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+				<%= link_to "hacker news", 
+						show_bookmarks_path(user_id: current_user.id, site: "news.ycombinator.com"),
+						class: 'dropdown-item' %>
+				<%= link_to "r/programming", 
+						show_bookmarks_path(user_id: current_user.id, site: "reddit.com/r/programming"),
+						class: 'dropdown-item' %>
+				<%= link_to "slashdot", 
+						show_bookmarks_path(user_id: current_user.id, site: "slashdot.org"),
+						class: 'dropdown-item' %>
 			</div>
 		</div>
-		<% if @filter_applied %>
-			<div class="col-sm-2">
-				<%= link_to "remove filter", 
-						show_bookmarks_path(user_id: current_user.id),
-						class: 'btn btn-block btn-outline-danger' %>
-			</div>
-		<% end %>
 	</div>
+	<% if @filter_applied %>
+		<div class="col-sm-2">
+			<%= link_to "remove filter", 
+					show_bookmarks_path(user_id: current_user.id),
+					class: 'btn btn-block btn-outline-danger' %>
+		</div>
+	<% end %>
+</div>
 
-	<table class="table table-borderless bookmarks-table">
-		<tbody style="background-color: #F8F9FA">
-			<% if @bookmarks.count.zero? %>
-				<tr>
+<table class="table table-borderless bookmarks-table">
+	<tbody style="background-color: #F8F9FA">
+		<% if @bookmarks.count.zero? %>
+			<tr>
+				<td>
+					<p class="text-center"> You don't have any bookmarks yet. </p>
+				</td>
+			</tr>
+		<% else %>
+			<% @bookmarks.each do |bookmark| %>
+				<tr class="bookmark-row">
+					<% if bookmark.type == :hn_post %>
+						<td width="5px" class="hn-filler">
+						
+						</td>
+					<% elsif bookmark.type == :reddit_post %>
+						<td width="5px" class="reddit-filler">
+						
+						</td>
+					<% else %>
+						<td width="5px" class="sd-filler">
+						
+						</td>
+					<% end %>
 					<td>
-						<p class="text-center"> You don't have any bookmarks yet. </p>
+						<a href="<%= bookmark.comments_url %>" class="hn-title" target="_blank">
+							<%= bookmark.title %>
+						</a>
+					</td>
+					<td align="right">
+						<%= link_to '', handle_bookmark_path(user_id: current_user.id, comments_url: bookmark.comments_url, title: bookmark.title, source: 'bookmarks'), class: 'far fa-trash fa-lg delete-button', remote: true %>
 					</td>
 				</tr>
-			<% else %>
-				<% @bookmarks.each do |bookmark| %>
-					<tr class="bookmark-row">
-						<% if bookmark.type == :hn_post %>
-							<td width="5px" class="hn-filler">
-							
-							</td>
-						<% elsif bookmark.type == :reddit_post %>
-							<td width="5px" class="reddit-filler">
-							
-							</td>
-						<% else %>
-							<td width="5px" class="sd-filler">
-							
-							</td>
-						<% end %>
-						<td>
-							<a href="<%= bookmark.comments_url %>" class="hn-title" target="_blank">
-								<%= bookmark.title %>
-							</a>
-						</td>
-						<td align="right">
-							<%= link_to '', handle_bookmark_path(user_id: current_user.id, comments_url: bookmark.comments_url, title: bookmark.title, source: 'bookmarks'), class: 'far fa-trash fa-lg delete-button', remote: true %>
-						</td>
-					</tr>
-				<% end %>
 			<% end %>
-		</tbody>
-	</table>
+		<% end %>
+	</tbody>
+</table>
 
-</div>
+
 
 <script>
 	$(document).ready(function() {

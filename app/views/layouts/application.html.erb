@@ -28,7 +28,9 @@
     <% if logged_in? %>
       <p id="user-id" style="display:none"> <%= current_user.id %> </p>
     <% end %>
-    <%= yield %>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>
 
