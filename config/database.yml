@@ -50,6 +50,7 @@ test:
 #
 production:
   <<: *default
-  url: <%= ENV["DATABASE_IP"] %>
+  host: <%= ENV["DATABASE_IP"] %>
+  database: news_production
   username: <%= ENV["DATABASE_USERNAME"] %>
   password: <%= ENV["DATABASE_PASSWORD"] %>
