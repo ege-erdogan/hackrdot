@@ -19,7 +19,13 @@ module Scraper
 
 		posts = hn_posts + sd_posts + reddit_posts
 
-		posts.each(&:save)
+		posts.each do |post|
+			begin
+				post.save
+			rescue 
+				puts 'cannot load post.'
+			end
+		end
 
 		return hn_posts, sd_posts, reddit_posts
 	end
