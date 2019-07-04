@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2019_06_27_155253) do
   end
 
   create_table "posts", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "title"
+    t.text "title"
     t.string "article_url"
     t.string "comments_url"
     t.integer "comment_count"
