@@ -13,6 +13,8 @@ module Scraper
 	}
 
 	def fetch_posts
+    Post.delete_all
+
 		hn_posts = get_hn_posts
 		sd_posts = get_sd_posts
 		reddit_posts = get_reddit_posts
