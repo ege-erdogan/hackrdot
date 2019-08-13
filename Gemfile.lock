@@ -122,7 +122,7 @@ GEM
     multi_xml (0.6.0)
     mysql2 (0.5.2)
     nio4r (2.3.1)
-    nokogiri (1.10.3)
+    nokogiri (1.10.4)
       mini_portile2 (~> 2.4.0)
     popper_js (1.14.5)
     public_suffix (3.1.0)
@@ -233,7 +233,7 @@ DEPENDENCIES
   jquery-rails
   listen (>= 3.0.5, < 3.2)
   mysql2 (>= 0.5.2, < 0.6.0)
-  nokogiri (~> 1.10.2)
+  nokogiri (~> 1.10.4)
   puma (~> 3.11)
   rails (~> 5.2.3)
   sass-rails (~> 5.0)
