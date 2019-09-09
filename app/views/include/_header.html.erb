@@ -23,7 +23,7 @@
 
 		<% if logged_in? %>
 
-			<% if !current_user.subscribed? %>
+<!-- 			<% if !current_user.subscribed? %>
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item">
 						<%= link_to "subscribe to the mailing list", 
@@ -32,7 +32,7 @@
 					</li>
 				</ul>
 			<% end %>
-
+ -->
 			<span>
 				<div class="btn-toolbar">
 					<%= link_to "bookmarks", show_bookmarks_path, class: 'btn btn-light'%>
