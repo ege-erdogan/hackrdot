@@ -34,7 +34,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 # Handling web content
-gem 'httparty', '~> 0.17.0'
+gem 'httparty', '~> 0.17.3'
 gem 'nokogiri', '~> 1.10.4'
 gem 'htmlentities', '~> 4.3', '>= 4.3.4'
 
