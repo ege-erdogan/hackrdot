@@ -13,16 +13,6 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
     <% if Rails.env == 'production' %>
-      <!-- Google Analytics -->
-      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-137899292-3"></script>
-      <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'UA-137899292-3');
-      </script>
-
       <!-- Adsense -->
       <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
       <script>
@@ -41,6 +31,10 @@
     <div class="container">
       <%= yield %>
     </div>
+
+    <% if Rails.env == 'production' %>
+      <script async defer src="https://api.hackrdot.com/app.js"></script> 
+      <noscript><img src="https://api.hackrdot.com/image.gif" alt=""></noscript>
+    <% end %>
   </body>
 </html>
-
