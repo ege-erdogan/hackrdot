@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.3'
+gem 'rails', '~> 6.0.2'
 # Use mysql as the database for Active Record
 gem 'mysql2', '>= 0.5.2', '< 0.6.0'
 # Use Puma as the app server
@@ -21,7 +21,7 @@ gem 'coffee-rails', '~> 5.0'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.5'
+gem 'jbuilder', '~> 2.10'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
@@ -34,8 +34,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 # Handling web content
-gem 'httparty', '~> 0.17.3'
-gem 'nokogiri', '~> 1.10.5'
+gem 'nokogiri', '~> 1.10.8'
+gem 'httparty', '~> 0.18.0'
 gem 'htmlentities', '~> 4.3', '>= 4.3.4'
 
 # UI
