@@ -35,7 +35,7 @@ gem 'jbuilder', '~> 2.5'
 
 # Handling web content
 gem 'httparty', '~> 0.17.3'
-gem 'nokogiri', '~> 1.10.5'
+gem 'nokogiri', '~> 1.10.8'
 gem 'htmlentities', '~> 4.3', '>= 4.3.4'
 
 # UI
