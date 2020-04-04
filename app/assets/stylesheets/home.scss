@@ -9,7 +9,7 @@
 
 body {
 	font-family: 'Fira-Sans', sans-serif !important;
-	@media(min-width: 375px) {
+	@media(max-width: 415px) {
 		font-size: 2em !important;
 	}
 }
@@ -78,6 +78,9 @@ $sd_button_background: #1E2329;
 		margin-top: 8px;
 		margin-bottom: 10px;
 		border-left: 3px solid $sd_secondary_text;
+	}
+	@media(max-width: 415px) {
+		font-size: 1.7em !important;
 	}
 }
 
