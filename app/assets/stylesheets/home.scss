@@ -9,6 +9,9 @@
 
 body {
 	font-family: 'Fira-Sans', sans-serif !important;
+	@media(min-width: 375px) {
+		font-size: 2em !important;
+	}
 }
 
 td {
@@ -101,7 +104,7 @@ $sd_button_background: #1E2329;
 	background-color: $hn_icon_background !important;
 	border: none !important;
 	&:hover {
-		background-color: $hn_darker !important; 
+		background-color: $hn_darker !important;
 	}
 }
 
@@ -156,7 +159,7 @@ border-radius: 0 !important;
 .fixed {
 	position: fixed !important;
 	height: 100% !important;
-}	
+}
 
 // icons
 
@@ -191,6 +194,3 @@ border-radius: 0 !important;
 	}
 	color: red;
 }
-
-
-
