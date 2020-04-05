@@ -1,7 +1,7 @@
 <table class="table table-borderless">
   <thead class="reddit-filler">
     <th colspan="4">
-    
+
     </th>
   </thead>
   <% @reddit_posts.each do |reddit_post| %>
@@ -18,6 +18,7 @@
         <small class="reddit-secondary-text">
           (<%= reddit_post.domain %>)
         </small>
+        <img src="<%= 'http://' + reddit_post.domain + '/favicon.ico' %>" alt="" height="16px" width="16px">
       </td>
       <% if logged_in? %>
         <% if @saved_posts.include? reddit_post.comments_url %>

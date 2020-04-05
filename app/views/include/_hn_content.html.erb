@@ -1,7 +1,7 @@
 <table class="table table-borderless">
   <thead class="hn-filler">
     <th colspan="4">
-      
+
     </th>
   </thead>
   <% @hn_posts.each do |hn_post| %>
@@ -12,12 +12,14 @@
         </strong>
       </td>
       <td>
+
         <a href="<%= hn_post.article_url %>" class="hn-title" target="_blank">
           <%= hn_post.title %>
         </a>
         <small class="text-muted hn-secondary-text">
           (<%= hn_post.domain %>)
         </small>
+        <img src="<%= 'http://' + hn_post.domain + '/favicon.ico' %>" alt="" height="16px" width="16px">
       </td>
       <% if logged_in? %>
         <% if @saved_posts.include? hn_post.comments_url %>
